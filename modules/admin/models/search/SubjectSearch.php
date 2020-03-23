@@ -17,7 +17,7 @@ class SubjectSearch extends Subject
     public function rules()
     {
         return [
-            [['id', 'is_chapter', 'created_at', 'updated_at'], 'integer'],
+            [['id', 'subject_id', 'created_at', 'updated_at'], 'integer'],
             [['title', 'info'], 'safe'],
         ];
     }
@@ -59,7 +59,7 @@ class SubjectSearch extends Subject
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'is_chapter' => $this->is_chapter,
+            'subject_id' => $this->subject_id,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);
