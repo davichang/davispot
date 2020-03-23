@@ -49,7 +49,11 @@ class BlogController extends BaseController
     public function actionView($id)
     {
         $model = Blog::findOne($id);
-        return $this->render('view',['model' => $model]);
+        if($model){
+            return $this->render('view',['model' => $model]);
+        }else{
+            return $this->render('error');
+        }
     }
 
 }
