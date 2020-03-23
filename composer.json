@@ -19,9 +19,9 @@
         "yiisoft/yii2-bootstrap": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
         "yiister/yii2-gentelella": "~1.0",
-        "nikitakls/yii2-editor-md": "*",
         "yii2mod/yii2-rbac": "*",
-        "zhuravljov/yii2-datetime-widgets" : "~1.1.0"
+        "zhuravljov/yii2-datetime-widgets" : "~1.1.0",
+        "nikitakls/yii2-editor-md": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

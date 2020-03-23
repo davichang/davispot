@@ -2,139 +2,166 @@
 
 namespace app\modules\admin\controllers;
 
-use Yii;
 use app\models\Subject;
-use app\modules\admin\models\search\TeachingLogSearch;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
+use app\models\Node;
+use nikitakls\markdown\actions\UploadFileAction;
 
-/**
- * SubjectController implements the CRUD actions for Subject model.
- */
-class SubjectController extends Controller
+class SubjectController extends \yii\web\Controller
 {
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
-    public function behaviors()
+    public function actions()
     {
+
         return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
+            'upload-image' => [
+                'class' => UploadFileAction::class,
+                'url' => '@web/uploads/subject',
+                'path' => '@webroot/uploads/subject',
+                // 'thumbPath' => '@filePath/thumb/puzzle/',
+                // 'thumbUrl' => '@fileUrl/thumb/puzzle/',
+                // 'thumbs' => [
+                //     'puzzle' => [
+                //         'width' => 480,
+                //         'height' => 320,
+                //         'main' => true
+                //     ],
+                // ],
+                'unique' => true,
+                'validatorOptions' => [
+                    'maxWidth' => 1600,
+                    'maxHeight' => 1200
+                ]
             ],
         ];
     }
-
-    /**
-     * Lists all Subject models.
-     * @return mixed
-     */
-    public function actionIndex()
+    public function actionChapterList($subject_id)
     {
-        $model = Subject::find()->where(['subject_id' => 0])->all();
-        return $this->render('index',['model'=>$model]);
-    }
+        if($subject_id)
+        {
+            $chapters = Subject::find()->where(['subject_id' => $subject_id])->all();
+            $subject = Subject::find()->where(['id' => $subject_id])->one();
 
-    /**
-     * Displays a single Subject model.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionView($id)
-    {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
-    }
-
-    /**
-     * Creates a new Subject model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
-    public function actionCreateSubject()
-    {
-        $model = new Subject();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->render('chapter-list',['subject' => $subject, 'chapters'=> $chapters]);
         }
 
-        return $this->render('create-subject', [
-            'model' => $model,
-        ]);
+        throw new NotFoundHttpException('The requested page does not exist.');
+
     }
 
-    /**
-     * Creates a new Chapter model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
+    /*
+    * 添加科目
+    */
     public function actionCreateChapter()
     {
         $model = new Subject();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if($model->load(\Yii::$app->request->post()) && $model->save()){
+
+            return $this->redirect(['subject/index']);
         }
 
-        return $this->render('create-chapter', [
-            'model' => $model,
-        ]);
+        return $this->render('create-chapter',['model'=>$model]);
     }
 
-    /**
-     * Updates an existing Subject model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionUpdate($id)
+    /*
+    * 添加科目
+    */
+    public function actionCreateSubject()
     {
-        $model = $this->findModel($id);
+        $model = new Subject();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if($model->load(\Yii::$app->request->post()) && $model->save()){
+
+            return $this->redirect(['subject/index']);
         }
 
-        return $this->render('update', [
-            'model' => $model,
-        ]);
+        return $this->render('create-subject',['model'=>$model]);
     }
 
-    /**
-     * Deletes an existing Subject model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionDelete($id)
+    public function actionIndex()
     {
-        $this->findModel($id)->delete();
+        $model = Subject::find()->where(['subject_id' => 0])->all();
+        
+        return $this->render('index',['model' => $model]);
+    }
+    
+    /*
+     * 编辑章
+     */
 
-        return $this->redirect(['index']);
+    public function actionEditChapter($id){
+
+        $model = Subject::find()->where(['id'=>$id])->one();
+
+        if($model->load(\Yii::$app->request->post()) && $model->save()){
+
+            return $this->redirect(['subject/index']);
+        }
+
+        return $this->render('edit-chapter',['model'=>$model]);
+
     }
 
-    /**
-     * Finds the Subject model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return Subject the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
+    /*
+     * 添加结
      */
-    protected function findModel($id)
-    {
-        if (($model = Subject::findOne($id)) !== null) {
-            return $model;
+
+    public function actionCreateNode($id){
+
+        if($id){
+
+            $model = new Node();
+
+            $model->subject_id = $id;
+
+            if($model->load(\Yii::$app->request->post()) && $model->save()){
+
+                return $this->redirect(['subject/index']);
+            }
+
+            return $this->render('create-node',['model'=>$model]);
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+    /*
+     * 编辑章
+     */
+
+    public function actionEditNode($id){
+
+        $model = Node::find()->where(['id'=>$id])->one();
+
+        if($model->load(\Yii::$app->request->post()) && $model->save()){
+
+            return $this->redirect(['subject/index']);
+        }
+
+        return $this->render('edit-node',['model'=>$model]);
+
+    }
+
+    /*
+     * 编辑内容
+     */
+
+    public function actionEditContent($id){
+        if($id){
+
+            $model = Node::find()->where(['id'=>$id])->one();
+
+            if($model->load(\Yii::$app->request->post()) && $model->save()){
+
+                return $this->redirect(['subject/index']);
+            }
+        }
+
+        return $this->render('edit-content',['model'=>$model]);
+
+    }
+
 }

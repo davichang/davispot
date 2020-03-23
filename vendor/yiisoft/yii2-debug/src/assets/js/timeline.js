@@ -2,8 +2,12 @@
     'use strict';
 
     var on = function (element, event, handler) {
+        var i;
+        if (null === element) {
+            return;
+        }
         if (element instanceof NodeList) {
-            for (var i = 0, len = element.length; i < len; i++) {
+            for (i = 0; i <  element.length; i++) {
                 element[i].addEventListener(event, handler, false);
             }
 
@@ -12,7 +16,7 @@
         if (!(element instanceof Array)) {
             element = [element];
         }
-        for (var i in element) {
+        for (i in element) {
             if (typeof element[i].addEventListener !== 'function') {
                 continue;
             }
@@ -33,7 +37,7 @@
             for (var i = 0, len = links.length; i < len; i++) {
                 new Tooltip(links[i]);
 
-                on(link, 'show.bs.tooltip', function() {
+                on(links[i], 'show.bs.tooltip', function() {
                     if (this.hasAttribute('data-memory')) {
                         var data = this.dataset.memory;
                         self.options.$memory.textContent = data[0];

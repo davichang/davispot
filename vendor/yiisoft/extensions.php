@@ -3,15 +3,6 @@
 $vendorDir = dirname(__DIR__);
 
 return array (
-  'yiisoft/yii2-gii' => 
-  array (
-    'name' => 'yiisoft/yii2-gii',
-    'version' => '2.1.0.0',
-    'alias' => 
-    array (
-      '@yii/gii' => $vendorDir . '/yiisoft/yii2-gii/src',
-    ),
-  ),
   'yiisoft/yii2-bootstrap' => 
   array (
     'name' => 'yiisoft/yii2-bootstrap',
@@ -39,15 +30,6 @@ return array (
       '@yii/faker' => $vendorDir . '/yiisoft/yii2-faker',
     ),
   ),
-  'yiisoft/yii2-debug' => 
-  array (
-    'name' => 'yiisoft/yii2-debug',
-    'version' => '2.1.7.0',
-    'alias' => 
-    array (
-      '@yii/debug' => $vendorDir . '/yiisoft/yii2-debug/src',
-    ),
-  ),
   'rmrevin/yii2-fontawesome' => 
   array (
     'name' => 'rmrevin/yii2-fontawesome',
@@ -64,15 +46,6 @@ return array (
     'alias' => 
     array (
       '@yiister/gentelella' => $vendorDir . '/yiister/yii2-gentelella',
-    ),
-  ),
-  'yii2mod/yii2-markdown' => 
-  array (
-    'name' => 'yii2mod/yii2-markdown',
-    'version' => '1.1.0.0',
-    'alias' => 
-    array (
-      '@yii2mod/markdown' => $vendorDir . '/yii2mod/yii2-markdown',
     ),
   ),
   'yiisoft/yii2-jui' => 
@@ -109,6 +82,33 @@ return array (
     'alias' => 
     array (
       '@zhuravljov/yii/widgets' => $vendorDir . '/zhuravljov/yii2-datetime-widgets/src',
+    ),
+  ),
+  'yiisoft/yii2-debug' => 
+  array (
+    'name' => 'yiisoft/yii2-debug',
+    'version' => '2.1.13.0',
+    'alias' => 
+    array (
+      '@yii/debug' => $vendorDir . '/yiisoft/yii2-debug/src',
+    ),
+  ),
+  'yiisoft/yii2-gii' => 
+  array (
+    'name' => 'yiisoft/yii2-gii',
+    'version' => '2.1.4.0',
+    'alias' => 
+    array (
+      '@yii/gii' => $vendorDir . '/yiisoft/yii2-gii/src',
+    ),
+  ),
+  'nikitakls/yii2-editor-md' => 
+  array (
+    'name' => 'nikitakls/yii2-editor-md',
+    'version' => '0.1.3.0',
+    'alias' => 
+    array (
+      '@nikitakls/markdown' => $vendorDir . '/nikitakls/yii2-editor-md',
     ),
   ),
 );

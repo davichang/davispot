@@ -2,7 +2,6 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use Yii;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Subject */
@@ -12,22 +11,22 @@ use Yii;
 <div class="subject-form">
 
     <?php
-        echo Yii::$app->request->get('id');
-        
+        if(Yii::$app->request->get('id')){ //如果传递了参数则加载表单
     ?>
 
-    <?php $form = ActiveForm::begin(); ?>
+        <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'subject_id')->textInput()->hiddenInput(['value'=>1])->label(false) ?>
+        <?= $form->field($model, 'subject_id')->textInput()->hiddenInput(['value'=>Yii::$app->request->get('id')])->label(false) ?>
 
-    <?= $form->field($model, 'title')->textInput(['maxlength' => true])->label('章节标题') ?>
+        <?= $form->field($model, 'title')->textInput(['maxlength' => true])->label('章节标题') ?>
 
-    <?= $form->field($model, 'info')->textarea(['rows'=>3])->label('简介') ?>
+        <?= $form->field($model, 'info')->textarea(['rows'=>3])->label('简介') ?>
 
-    <div class="form-group">
-        <?= Html::submitButton('保存', ['class' => 'btn btn-success']) ?>
-    </div>
+        <div class="form-group">
+            <?= Html::submitButton('保存', ['class' => 'btn btn-success']) ?>
+        </div>
 
-    <?php ActiveForm::end(); ?>
+        <?php ActiveForm::end(); ?>
+    <?php } ?>
 
 </div>

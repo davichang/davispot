@@ -1,6 +1,47 @@
 Yii Framework 2 debug extension Change Log
 ==========================================
 
+2.1.13 January 17, 2020
+-----------------------
+
+- Fix #427: Fix missing import yii\helpers\Html in DumpPanel (zhukovra)
+
+
+2.1.12 November 19, 2019
+------------------------
+
+- Bug #424: Fixes missing timeline panel tooltips (My6UoT9)
+- Enh #425: Add warning message related to `traceLevel` on db panel (kjusupov)
+
+
+2.1.11 November 05, 2019
+------------------------
+
+- Bug #325: Remove staled data files i.e. files that are not in the current index file (zhukovra)
+- Bug #329: Fix logging AJAX request if URL has domain (zhukovra)
+- Bug #423: Fix duplicated toolbar when loading the iframe from a different origin (My6UoT9, samdark)
+- Enh #202: Add buttons for navigation between requests (zhukovra)
+
+
+2.1.10 October 22, 2019
+-----------------------
+
+- Enh #412: Improved layout of the Logs panel (machour, pistej)
+
+
+2.1.9 September 18, 2019
+------------------------
+
+- Bug #409: Fixed "Since previous" column's value calculation (Ir00man)
+
+
+2.1.8 August 20, 2019
+---------------------
+
+- Bug #333: Ignore normalizer in debug bar URL rules (simialbi)
+- Bug #347: Fixed "Cannot read property 'addEventListener' of null" bug of user switch (simialbi)
+
+
 2.1.7 July 30, 2019
 -------------------
 

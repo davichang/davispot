@@ -25,10 +25,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php foreach($model as $m){ ?>
         <div class="col-xs-6 col-md-3">
             <div class="alert alert-success">
-                <h4 class="lead"><?= $m->title;?></h4>
+                <div class="page-header">
+                    <h1><?= $m->title;?></h1>
+                </div>
                 <p>
-                <a href="<?= Url::to(['/admin/subject/create-chapter','id'=>$m->id]) ?>"><button type="button" class="btn btn-default btn-sm">添加章节</button></a>
-                <a href="<?= $m->id; ?>"><button type="button" class="btn btn-warning btn-sm">添加内容</button></a>
+                <a href="<?= Url::to(['/admin/subject/chapter-list','subject_id'=>$m->id]) ?>"><button type="button" class="btn btn-warning btn-sm">科目管理</button></a>
                 </p>
             </div>
         </div>

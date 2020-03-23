@@ -15,7 +15,7 @@ Documentation is at [docs/guide/README.md](docs/guide/README.md).
 
 [![Latest Stable Version](https://poser.pugx.org/yiisoft/yii2-gii/v/stable.png)](https://packagist.org/packages/yiisoft/yii2-gii)
 [![Total Downloads](https://poser.pugx.org/yiisoft/yii2-gii/downloads.png)](https://packagist.org/packages/yiisoft/yii2-gii)
-[![Build Status](https://travis-ci.org/yiisoft/yii2-gii.svg?branch=master)](https://travis-ci.org/yiisoft/yii2-gii)
+[![Build Status](https://travis-ci.com/yiisoft/yii2-gii.svg?branch=master)](https://travis-ci.com/yiisoft/yii2-gii)
 
 
 Installation
@@ -32,7 +32,7 @@ php composer.phar require --dev --prefer-dist yiisoft/yii2-gii
 or add
 
 ```
-"yiisoft/yii2-gii": "~2.0.0"
+"yiisoft/yii2-gii": "~2.1.0"
 ```
 
 to the require-dev section of your `composer.json` file.
