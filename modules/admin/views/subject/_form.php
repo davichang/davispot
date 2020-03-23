@@ -12,11 +12,11 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
+    <?= $form->field($model, 'subject_id')->textInput() ?>
+
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'info')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'is_chapter')->textInput() ?>
 
     <?= $form->field($model, 'created_at')->textInput() ?>
 

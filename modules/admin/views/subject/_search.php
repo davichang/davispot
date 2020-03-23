@@ -17,11 +17,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id') ?>
 
+    <?= $form->field($model, 'subject_id') ?>
+
     <?= $form->field($model, 'title') ?>
 
     <?= $form->field($model, 'info') ?>
-
-    <?= $form->field($model, 'is_chapter') ?>
 
     <?= $form->field($model, 'created_at') ?>
 
