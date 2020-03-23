@@ -4,7 +4,7 @@ namespace app\modules\admin\controllers;
 
 use Yii;
 use app\models\Subject;
-use app\modules\admin\models\search\SubjectSearch;
+use app\modules\admin\models\search\TeachingLogSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -35,13 +35,8 @@ class SubjectController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new SubjectSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
+        $model = Subject::find()->where(['subject_id' => 0])->all();
+        return $this->render('index',['model'=>$model]);
     }
 
     /**

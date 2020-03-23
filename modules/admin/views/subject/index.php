@@ -4,10 +4,10 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\modules\admin\models\search\SubjectSearch */
+/* @var $searchModel app\modules\admin\models\search\TeachingLogSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Subjects';
+$this->title = '教程管理';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="subject-index">
@@ -15,27 +15,22 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Subject', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('添加科目', ['create'], ['class' => 'btn btn-danger']) ?>
     </p>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <hr />
 
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            //'id',
-            //'subject_id',
-            'title',
-            'info',
-            'created_at',
-            //'updated_at',
-
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
-
-
+    <div class="row">
+    <?php foreach($model as $m){ ?>
+        <div class="col-xs-6 col-md-3">
+            <div class="alert alert-success">
+                <h4 class="lead"><?= $m->title;?></h4>
+                <p>
+                <a href="<?= $m->id; ?>"><button type="button" class="btn btn-default btn-sm">添加章节</button></a>
+                <a href="<?= $m->id; ?>"><button type="button" class="btn btn-warning btn-sm">添加内容</button></a>
+                </p>
+            </div>
+        </div>
+    <?php } ?>
+    </div>
 </div>
