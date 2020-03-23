@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
 -- 主机： localhost
--- 生成日期： 2020-03-23 10:12:51
--- 服务器版本： 5.7.26-log
--- PHP 版本： 7.3.6
+-- 生成日期： 2020-03-23 11:09:55
+-- 服务器版本： 5.7.26
+-- PHP 版本： 7.3.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -784,9 +784,9 @@ INSERT INTO `squad` (`id`, `squad_name`, `status`, `description`, `created_at`, 
 
 CREATE TABLE `subject` (
   `id` int(11) NOT NULL,
+  `subject_id` int(11) DEFAULT '0' COMMENT '所属科目',
   `title` varchar(100) NOT NULL COMMENT '书名或章节名',
   `info` varchar(200) NOT NULL COMMENT '简介',
-  `is_chapter` int(1) NOT NULL DEFAULT '1' COMMENT '是否章节：1是0否',
   `created_at` int(11) NOT NULL COMMENT '创建时间',
   `updated_at` int(11) NOT NULL COMMENT '更新时间'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -795,8 +795,8 @@ CREATE TABLE `subject` (
 -- 转存表中的数据 `subject`
 --
 
-INSERT INTO `subject` (`id`, `title`, `info`, `is_chapter`, `created_at`, `updated_at`) VALUES
-(1, 'PHP基础入门', 'PHP :HyperText Processor，是一种流行的WEB开发语言，其采用面向对象的设计模式，入门简单、部署便捷，在WEB开发市场占有较高的份额', 0, 1584929468, 1584929468);
+INSERT INTO `subject` (`id`, `subject_id`, `title`, `info`, `created_at`, `updated_at`) VALUES
+(1, 0, 'PHP基础入门', 'PHP :HyperText Processor，是一种流行的WEB开发语言，其采用面向对象的设计模式，入门简单、部署便捷，在WEB开发市场占有较高的份额', 1584929468, 1584929468);
 
 -- --------------------------------------------------------
 
