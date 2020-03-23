@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\modules\admin\models\search\TeachingLogSearch */
@@ -15,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('添加科目', ['create'], ['class' => 'btn btn-danger']) ?>
+        <?= Html::a('添加科目', ['create-subject'], ['class' => 'btn btn-danger']) ?>
     </p>
 
     <hr />
@@ -26,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="alert alert-success">
                 <h4 class="lead"><?= $m->title;?></h4>
                 <p>
-                <a href="<?= $m->id; ?>"><button type="button" class="btn btn-default btn-sm">添加章节</button></a>
+                <a href="<?= Url::to(['/admin/subject/create-chapter','id'=>$m->id]) ?>"><button type="button" class="btn btn-default btn-sm">添加章节</button></a>
                 <a href="<?= $m->id; ?>"><button type="button" class="btn btn-warning btn-sm">添加内容</button></a>
                 </p>
             </div>

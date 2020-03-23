@@ -57,7 +57,7 @@ class SubjectController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreateSubject()
     {
         $model = new Subject();
 
@@ -65,7 +65,25 @@ class SubjectController extends Controller
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
-        return $this->render('create', [
+        return $this->render('create-subject', [
+            'model' => $model,
+        ]);
+    }
+
+    /**
+     * Creates a new Chapter model.
+     * If creation is successful, the browser will be redirected to the 'view' page.
+     * @return mixed
+     */
+    public function actionCreateChapter()
+    {
+        $model = new Subject();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
+        }
+
+        return $this->render('create-chapter', [
             'model' => $model,
         ]);
     }
