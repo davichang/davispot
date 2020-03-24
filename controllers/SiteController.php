@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\EntryForm;
+use app\models\Present;
 use app\models\User;
 use Yii;
 use yii\filters\AccessControl;
@@ -207,5 +208,17 @@ class SiteController extends BaseController
             'model' => $model,
         ]);
     }
+    
+    /*
+     * 考勤统计
+     *
+     */
+
+    public function actionPresentInfo(){
+        $user = User::find()->where(['id' => Yii::$app->user->id])->one();
+        $present = Present::find()->where(['user_id' => Yii::$app->user->id])->all();
+        return $this->render('present-info',['user' => $user,'present'=>$present]);
+    }
+
 
 }
