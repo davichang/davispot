@@ -9,6 +9,9 @@ use app\models\Node;
 <p class="subject-chapters">
 <h1><?= $subject->title ?></h1>
 <p><?= $subject->info ?></p>
+<p>
+    <?= Html::a('添加章', Url::to(['/admin/subject/create-chapter', 'id' => $subject->id]), ['class' => 'btn btn-success']) ?>
+</p>
 <hr/>
 
 <div class="row">
@@ -24,8 +27,9 @@ use app\models\Node;
                             <small><a
                                         href="<?= Url::to(['/admin/subject/edit-chapter', 'id' => $chapter->id]) ?>"
                                         class="btn btn-warning btn-xs">
-                                    编辑 </a> <a href="<?= Url::to(['/admin/subject/create-node', 'id' => $chapter->id]) ?>"
-                                               class="btn btn-success btn-xs">
+                                    编辑 </a> <a
+                                        href="<?= Url::to(['/admin/subject/create-node', 'id' => $chapter->id]) ?>"
+                                        class="btn btn-success btn-xs">
                                     加节 </a></small>
                         </a>
                     </h4>
@@ -43,7 +47,8 @@ use app\models\Node;
                                         <small><a
                                                     href="<?= Url::to(['/admin/subject/edit-node', 'id' => $node->id]) ?>"
                                                     class="btn btn-info btn-xs">
-                                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>编辑 </a></small>
+                                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>编辑 </a>
+                                        </small>
                                     </h4>
                                 </li>
                             <?php } ?>
