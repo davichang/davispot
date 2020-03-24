@@ -24,20 +24,6 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
             [
-                'label' => '用户或学号',
-                'attribute' => 'user_id',
-                'value' => function($model){
-                    return $model->user->username;
-                }
-            ],
-            [
-                'label' => '姓名',
-                'attribute' => 'user_id',
-                'value' => function($model){
-                    return $model->user->true_name;
-                }
-            ],
-            [
                 'label' => '缺席状态',
                 'attribute' => 'present_status',
                 'value' => function($model){
@@ -45,10 +31,37 @@ $this->params['breadcrumbs'][] = $this->title;
                 },
                 'filter' => ArrayHelper::map(PresentStatus::find()->all(),'id','status_name'),
             ],
+            [
+                'label' => '用户或学号',
+                'attribute' => 'user_id',
+                'value' => function($model){
+                    return $model->user->username;
+                },
+                'filter' => false,
+            ],
+            [
+                'label' => '姓名',
+                'attribute' => 'user_id',
+                'value' => function($model){
+                    return $model->user->true_name;
+                },
+                'filter' => false,
+            ],
+            [
+                'label' => '备注',
+                'attribute' => 'remark',
+                'filter' => false,
+            ],
 
-            'remark',
-            'created_at:datetime',
-            //'updated_at',
+            [
+                'label' => '创建时间',
+                'attribute' => 'created_at',
+                'value' => function($model){
+                    return date("Y-m-d H:m",$model->created_at);
+                },
+                'filter' => false,
+            ],
+
 
             [
                 'class' => 'yii\grid\ActionColumn',
