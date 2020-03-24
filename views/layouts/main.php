@@ -50,6 +50,10 @@ AppAsset::register($this);
                                 'label' => '任务',
                                 'url' => ['/task'],// 将用户下拉菜单的班务连接到operate控制器的index方法，index默认可省略
                         ],
+                        [
+                            'label' => '考勤',
+                            'url' => ['/site/present-info'],// 将用户下拉菜单的班务连接到operate控制器的index方法，index默认可省略
+                        ],
                     '<li class="divider"></li>',//加一条横线隔开
                     ['label' => '资料', 'url' => ['/site/user-profile']], //用户资料链接，还未开发，先占用
                     [//退出菜单
