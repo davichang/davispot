@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- 主机： localhost
--- 生成日期： 2020-03-23 11:09:55
--- 服务器版本： 5.7.26
--- PHP 版本： 7.3.4
+-- 生成日期： 2020-03-25 21:48:23
+-- 服务器版本： 5.7.26-log
+-- PHP 版本： 7.3.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -219,6 +219,16 @@ INSERT INTO `auth_item` (`name`, `type`, `description`, `rule_name`, `data`, `cr
 ('/admin/squad/index', 2, NULL, NULL, NULL, 1564831291, 1564831291),
 ('/admin/squad/update', 2, NULL, NULL, NULL, 1564831291, 1564831291),
 ('/admin/squad/view', 2, NULL, NULL, NULL, 1564831291, 1564831291),
+('/admin/subject/*', 2, NULL, NULL, NULL, 1584973957, 1584973957),
+('/admin/subject/chapter-list', 2, NULL, NULL, NULL, 1584973957, 1584973957),
+('/admin/subject/create-chapter', 2, NULL, NULL, NULL, 1584973957, 1584973957),
+('/admin/subject/create-node', 2, NULL, NULL, NULL, 1584973957, 1584973957),
+('/admin/subject/create-subject', 2, NULL, NULL, NULL, 1584973957, 1584973957),
+('/admin/subject/edit-chapter', 2, NULL, NULL, NULL, 1584973957, 1584973957),
+('/admin/subject/edit-content', 2, NULL, NULL, NULL, 1584973957, 1584973957),
+('/admin/subject/edit-node', 2, NULL, NULL, NULL, 1584973957, 1584973957),
+('/admin/subject/index', 2, NULL, NULL, NULL, 1584973957, 1584973957),
+('/admin/subject/upload-image', 2, NULL, NULL, NULL, 1584973957, 1584973957),
 ('/admin/task-analys/*', 2, NULL, NULL, NULL, 1564926645, 1564926645),
 ('/admin/task-analys/create', 2, NULL, NULL, NULL, 1566123379, 1566123379),
 ('/admin/task-analys/delete', 2, NULL, NULL, NULL, 1566123379, 1566123379),
@@ -243,6 +253,7 @@ INSERT INTO `auth_item` (`name`, `type`, `description`, `rule_name`, `data`, `cr
 ('/admin/teaching-log/delete', 2, NULL, NULL, NULL, 1566717712, 1566717712),
 ('/admin/teaching-log/index', 2, NULL, NULL, NULL, 1566717712, 1566717712),
 ('/admin/teaching-log/update', 2, NULL, NULL, NULL, 1566717712, 1566717712),
+('/admin/teaching-log/upload-image', 2, NULL, NULL, NULL, 1584973957, 1584973957),
 ('/admin/teaching-log/view', 2, NULL, NULL, NULL, 1566717712, 1566717712),
 ('/admin/term/*', 2, NULL, NULL, NULL, 1564831291, 1564831291),
 ('/admin/term/create', 2, NULL, NULL, NULL, 1564831291, 1564831291),
@@ -317,6 +328,7 @@ INSERT INTO `auth_item` (`name`, `type`, `description`, `rule_name`, `data`, `cr
 ('/site/index', 2, NULL, NULL, NULL, 1564831291, 1564831291),
 ('/site/login', 2, NULL, NULL, NULL, 1564831291, 1564831291),
 ('/site/logout', 2, NULL, NULL, NULL, 1564831291, 1564831291),
+('/site/present-info', 2, NULL, NULL, NULL, 1585096364, 1585096364),
 ('/site/set-avatar', 2, NULL, NULL, NULL, 1564919207, 1564919207),
 ('/site/set-profile', 2, NULL, NULL, NULL, 1564919207, 1564919207),
 ('/site/user-profile', 2, NULL, NULL, NULL, 1564919207, 1564919207),
@@ -399,6 +411,16 @@ INSERT INTO `auth_item_child` (`parent`, `child`) VALUES
 ('整站权限', '/admin/squad/index'),
 ('整站权限', '/admin/squad/update'),
 ('整站权限', '/admin/squad/view'),
+('整站权限', '/admin/subject/*'),
+('整站权限', '/admin/subject/chapter-list'),
+('整站权限', '/admin/subject/create-chapter'),
+('整站权限', '/admin/subject/create-node'),
+('整站权限', '/admin/subject/create-subject'),
+('整站权限', '/admin/subject/edit-chapter'),
+('整站权限', '/admin/subject/edit-content'),
+('整站权限', '/admin/subject/edit-node'),
+('整站权限', '/admin/subject/index'),
+('整站权限', '/admin/subject/upload-image'),
 ('整站权限', '/admin/task-analys/*'),
 ('整站权限', '/admin/task-analys/create'),
 ('整站权限', '/admin/task-analys/delete'),
@@ -423,6 +445,7 @@ INSERT INTO `auth_item_child` (`parent`, `child`) VALUES
 ('整站权限', '/admin/teaching-log/delete'),
 ('整站权限', '/admin/teaching-log/index'),
 ('整站权限', '/admin/teaching-log/update'),
+('整站权限', '/admin/teaching-log/upload-image'),
 ('整站权限', '/admin/teaching-log/view'),
 ('整站权限', '/admin/term/*'),
 ('整站权限', '/admin/term/create'),
@@ -507,15 +530,21 @@ INSERT INTO `auth_item_child` (`parent`, `child`) VALUES
 ('整站权限', '/site/login'),
 ('前台访问', '/site/logout'),
 ('整站权限', '/site/logout'),
+('前台访问', '/site/present-info'),
+('整站权限', '/site/present-info'),
 ('前台访问', '/site/set-avatar'),
 ('整站权限', '/site/set-avatar'),
 ('前台访问', '/site/set-profile'),
 ('整站权限', '/site/set-profile'),
 ('前台访问', '/site/user-profile'),
 ('整站权限', '/site/user-profile'),
+('前台访问', '/task/*'),
 ('整站权限', '/task/*'),
+('前台访问', '/task/create'),
 ('整站权限', '/task/create'),
+('前台访问', '/task/index'),
 ('整站权限', '/task/index'),
+('前台访问', '/task/update'),
 ('整站权限', '/task/update'),
 ('整站权限', '前台访问'),
 ('普通用户', '前台访问'),
@@ -545,6 +574,7 @@ CREATE TABLE `blog` (
   `title` varchar(100) NOT NULL COMMENT '标题',
   `cate_id` int(11) NOT NULL COMMENT '栏目ID',
   `content` text NOT NULL COMMENT '内容',
+  `is_deleted` int(1) NOT NULL DEFAULT '0' COMMENT '是否删除',
   `created_at` int(11) NOT NULL COMMENT '创建时间',
   `updated_at` int(11) NOT NULL COMMENT '更新时间'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='博客表';
@@ -553,24 +583,26 @@ CREATE TABLE `blog` (
 -- 转存表中的数据 `blog`
 --
 
-INSERT INTO `blog` (`id`, `title`, `cate_id`, `content`, `created_at`, `updated_at`) VALUES
-(1, 'Yii2在LNMP环境下500状态码的解决办法', 19, '暑期看书之余，将自己的个人站点完善下功能，于是将服务器重置了，安装了[LNMP](http://www.lnmp.org)，特意选了最新版本支持PHP7.3的，但是在部署[YiiFramework](http://www.yiiframework.com)的时候访问的时候出现500状态码，于是查询log日志，竟无异常。\r\n\r\n一般来说500错误是文件权限的问题，在网上查了资料，发现是php open_basedir 配置的问题，php不能引入其授权目录上级及其以上的文件，若是lnmp环境，位置在：`/usr/local/nginx/conf/fastcgi.conf`，查找：\r\n\r\n```\r\nfastcgi_param PHP_ADMIN_VALUE \"open_basedir=$document_root/:/tmp/:/proc/\";\r\n```\r\n\r\n然后把这段内容改成：\r\n\r\n```\r\nfastcgi_param PHP_ADMIN_VALUE \"open_basedir=/home/wwwroot/:/tmp/:/proc/\";\r\n```\r\n\r\n重新加载LNMP即可。\r\n\r\n```\r\nlnmp reload\r\n```\r\n\r\n---\r\n', 1563670693, 1584719895),
-(91, 'word文件是一个压缩文件?', 1, '### 沧海一粟\r\n\r\n我是一个计算机从业者，多数时候接触文档，但最近我才知晓：word文件（就是平常我们用来处理文字的软件建立的文件）其实是一个压缩文件。\r\n\r\n当知道这个答案后，我难以言喻的心情，自己从事计算机相关行业，几乎时刻离不开文档处理，但是十多年来从未知晓word其实是一个压缩文件，瞬间觉得自己似一个无知之徒。\r\n\r\n怀着好奇的精神，我把excel（电子表格文件）文件也进行了解压缩，果不其然，也是压缩文件。\r\n\r\n于是继续探索PPT文件，结果与上述相同。\r\n\r\n---\r\n\r\n### 到底是什么文件被压缩到了一起成了word文件？\r\n\r\n我新建了一个\"docx\"文件，随意输入了几行字，插入了一张图片，然后将其解压缩，这时出现三个目录和一个xml文件\r\n\r\n+ 目录是：**`_rels`** 、**`docProps`** 、**`word`**，目录里面还包括其它文件，比如插入的图片就保存在`word`目录的`media`文件夹，其它文件多数是xml文件，没有细究，但可以猜到是保存内容、样式等的。\r\n\r\n+ 文件是`[Content_Types]` 类似索引文件\r\n\r\n---\r\n\r\n这次认识，给我好好上了一课，认识到这个之后，自己也有收获，比如提取文档内容，应该有新的思路了。\r\n\r\n', 1566178064, 1584719909),
-(93, 'Yii2 ActiveForm使用技巧', 19, '```php\r\n//密码  \r\n<?= $form->field($model, \'password\')->passwordInput() ?>  \r\n//标签与提示  \r\n<?= $form->field($model, \'username\')->textInput()->hint(\'请输入你的用户名\')->label(\'用户名\') ?>  \r\n<?= $form->field($model, \'username[]\',[\'inputOptions\'=>[\'value\'=>\'abc\',\'class\'=>\'form-control\']]) ?>//默认值  \r\n//邮箱  \r\n<?= $form->field($model, \'username\')->input(\'email\') ?>  \r\n//上传  \r\n<?= $form->field($model, \'username\')->fileInput([\'multiple\'=>\'multiple\']) ?>  \r\n//多选列表  \r\n<?= $form->field($model, \'username[]\')->checkboxList([\'a\' => \'多选a\', \'b\' => \'多选b\', \'c\' => \'多选c\']) ?>  \r\n//单个选择框  \r\n<?= $form->field($model, \'username\')->checkbox([],false)->label(\'已审核\') ?> ?>  \r\n//下拉列表  \r\n<?= $form->field($model, \'username[]\')->dropDownList([\'a\' => \'多选a\', \'b\' => \'多选b\', \'c\' => \'多选c\']) ?>  \r\n<?= $form->field($model, \'username[]\')->dropDownList([\'a\' => \'多选a\', \'b\' => \'多选b\', \'c\' => \'多选c\'], [\'prompt\' => \'多选b\']) ?>  \r\n//隐藏框  \r\n<?= $form->field($model, \'username\')->hiddenInput([\'1\']) ?>  \r\nListBox  \r\n<?= $form->field($model, \'username[]\')->listBox([\'a\' => \'多选a\', \'b\' => \'多选b\', \'c\' => \'多选c\']) ?>  \r\n//单选列表  \r\n<?= $form->field($model, \'username[]\')->radioList([\'a\' => \'单选a\', \'b\' => \'单选b\', \'c\' => \'单选c\']) ?>  \r\n//多行文本  \r\n<?= $form->field($model, \'username\')->textarea() ?>  \r\n//widget扩展  \r\n<?= $form->field($model, \'username\')->widget(\\yii\\widgets\\MaskedInput::className(), [\'mask\' => \'9999/99/99\',]); ?>  \r\n```', 1566305040, 1584719919),
-(98, '岭南中大 绿树成荫', 16, '七月的羊城格外的闷热，当看到中大的校门时，才会感到一丝丝凉意，这里的人文建筑无一不显示着这所名校的底蕴和光辉璀璨的历史。作为一个要在这呆一周的“学生”，我得一闲暇，漫步其中，感受这浓浓的绿意。\r\n\r\n我住在智慧酒店，离中大约2公里，在羊城高楼大厦中，导航的信号并不是很清晰，我扫码骑了一辆共享单车，约30分钟后就到了校门。培训中心照顾的很体贴，已经将我的身份信息录入了安保系统，在首次使用身份证进入并刷脸后，我就可以收起身份证，刷脸出入了。\r\n\r\n中大的校园保留了很多的古迹，多座教学楼都是写满了沧桑，但景色很是迷人。\r\n\r\n课堂上，授课的教师，是真正的大师，上课富有深度，饱有激情，让人受益匪浅。\r\n\r\n除了课堂之外，还领略了当地的风土人情、并在深圳实践了一天，一周之后，踏上了归途\r\n\r\n<img src=\"/uploads/blog/2/b/8/1/35e7716f2d4442.jpg\" class=\"img-responsive\" />\r\n\r\n<img src=\"/uploads/blog/3/4/3/6/c5e7716fc965c7.jpg\" class=\"img-responsive\" />\r\n\r\n<img src=\"/uploads/blog/7/e/8/2/c5e77170473b61.jpg\" class=\"img-responsive\" />\r\n\r\n<img src=\"/uploads/blog/b/1/7/8/e5e77170b87f2e.jpg\" class=\"img-responsive\" />\r\n\r\n<img src=\"/uploads/blog/f/0/1/7/95e7717137ea69.jpg\" class=\"img-responsive\" />\r\n\r\n<img src=\"/uploads/blog/7/3/6/4/d5e77171d896ed.jpg\" class=\"img-responsive\" />', 1567257537, 1584863103),
-(100, 'Pure-ftp设置连接数', 17, '课堂上，进行FTP链接的时候，出现了`421 Too many connections (10) from this IP`错误，从字面看，这是同一IP的连接数超过设定值了。\r\n\r\n今天在办公室，就着手解决这问题。\r\n\r\n`lnmp`中的`pure-ftp`配置文件在`/usr/local/pureftpd/etc`下，使用`vim`打开`pure-ftpd.conf`，修改以下参数值。\r\n\r\n```\r\nMaxClientNumber 100\r\nMaxClientPerIP 10\r\n```\r\n\r\n重启即可\r\n\r\n```\r\n/etc/init.d/purftpd restart\r\n```\r\n\r\n', 1568603807, 1584719935),
-(102, 'Win10 状态栏输入法多出一个“拼”字', 20, '这几天一直在折腾电脑，显卡、显示器，不停的折腾。\r\n\r\n下午 Dell的U2417到货，就匆忙的装好，重装了系统，状态栏多出一个输入法图标，印象中没有的，对于强迫症的我来说，实在是不能忍，于是搜索解决方法，终于找到一个可用的。\r\n\r\n> Windows设置>时间和语言>语言>添加语言>English(United States)安装完后，调整顺序，再将其删除。\r\n\r\n解决掉两个输入法图标的问题了，戴尔U2417非常给力。', 1570445218, 1584795370),
-(104, 'Manjaro安装后的初始配置及常见问题的处理', 17, '### 换源\r\n\r\n```shell\r\nsudo pacman-mirrors -i -c China -m rank //更新镜像排名\r\n```\r\n\r\n 使用root权限编辑`/etc/pacman.conf`增加以下内容 \r\n\r\n```shell\r\n[archlinuxcn]\r\nServer = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch\r\n```\r\n\r\n 然后执行 \r\n\r\n```shell\r\nsudo pacman -Syy && sudo pacman -S archlinuxcn-keyring\r\n```\r\n\r\n### update \r\n\r\n```shell\r\nsudo pacman -Syyu\r\n```\r\n\r\n\r\n###  谷歌拼音\r\n\r\n```shell\r\nsudo pacman -S fcitx-googlepinyin\r\n\r\nsudo pacman -S fcitx-im# 全部安装\r\n\r\nsudo pacman -S fcitx-configtool# 图形化配置工具\r\n\r\n```\r\n\r\n设置中文输入法环境变量，否则中文输入法无法启动\r\n\r\n```shell\r\nsudo vi ~/.xprofile\r\n\r\nexport GTK_IM_MODULE=fcitx\r\nexport QT_IM_MODULE=fcitx\r\nexport XMODIFIERS=\"@im=fcitx\"\r\n```\r\n\r\n### Vim编辑器\r\n\r\n```\r\nsudo pacman -S vim\r\n```\r\n\r\n### Typora\r\n\r\n```text\r\nsudo pacman -S typora\r\n```\r\n\r\n### WPS\r\n\r\n```shell\r\nsudo pacman -S wps-office-cn\r\nsudo pacman -S ttf-wps-fonts\r\nsudo pacman -S wps-office-mui-zh-cn\r\n```\r\n\r\n### 网易云音乐\r\n\r\n```shell\r\nsudo pacman -S netease-cloud-music\r\n```\r\n\r\n### 深度截图\r\n\r\n```shell\r\nsudo pacman -S deepin-screenshot\r\n```\r\n\r\n------\r\n\r\n### 开始菜单不显示程序图标的解决方法\r\n\r\n```shell\r\n右键任务栏开始图标>编辑应用程序>KDE菜单编辑器>菜单栏-编辑>恢复到系统菜单\r\n```\r\n\r\n### 使用pacman提示无法锁定数据库\r\n\r\n```shell\r\n滚动升级Manjaro遇到错误如下：\r\n\r\n:: 正在同步软件包数据库...\r\n错误：无法升级 core (无法锁定数据库)\r\n错误：无法升级 extra (无法锁定数据库)\r\n错误：无法升级 community (无法锁定数据库)\r\n......\r\n错误：无法同步任何数据库\r\n\r\n解决办法，删掉之前的文件： /var/lib/pacman/db.lck\r\n```', 1582188090, 1584719948),
-(75, '在Yii2中设置Navbar100%宽度', 19, 'Yii2框架高度集成了BootstrapUI，在进行后台设计的时候，为了尽量大的利用界面，通常设置为满屏，但Yii2 的上手成本较高，其默认继承的是常规状态的导航条，利用下面的方法，将其设置为100%宽度。\r\n\r\nYii2的布局文件一般存放在views目录下的layouts文件夹内，其默认名称是main.php，请在相应的目录进行查找。\r\n\r\n```\r\n NavBar::begin([\r\n        \'brandLabel\' => Yii::$app->name,\r\n        \'brandUrl\' => Yii::$app->homeUrl,\r\n        \'options\' => [\r\n            \'class\' => \'navbar-inverse navbar-fixed-top\',\r\n        ],\r\n        \'innerContainerOptions\' => [\'class\'=>\'container-fluid\'],//此行为添加\r\n    ]);\r\n```\r\n\r\n', 1564886018, 1584719962),
-(76, 'Yii2 Gridview使用技巧', 19, '### Gridview\r\n\r\n开发过程中经常使用到Gridview，一些常用的功能记录一下，以便以后查阅。\r\n\r\n1.第一段代码用匿名函数返回数据表中的值\r\n\r\n2.第二段代码用匿名函数返回时间格式，此处一直没解决利用[\'date\',\"Y-m-d\"]方式有同样功效，但是时间不对？？\r\n\r\n3.第三代码用匿名函数返回关联表数据，同时利用下拉菜单进行检索。\r\n\r\n\r\n```\r\n[\r\n    \'label\'=>\'状态\',\r\n    \'attribute\' => \'status\',\r\n    \'filter\' => true, //不显示搜索框\r\n    \'value\' => function($data) {\r\n        return $data->status == 10 ?  \'正常\' : \'禁止\'; }\r\n],\r\n/////////////////////////////////////////////////\r\n[\r\n    \'label\'=>\'注册日期\',\r\n    \'attribute\' => \'created_at\',\r\n    \'filter\' => false, //不显示搜索框\r\n    \'value\' => function($data) {\r\n        return date(\'Y-m-d H:i:s\',$data->created_at); }\r\n],\r\n///////////////////////////////////////////////////////            \r\n[\r\n    \'label\' => \'班级\' ,\r\n    \'attribute\' =>\'squad_id\',\r\n    \'value\' => function ($model) {\r\n        return $model->squad->squad_name;\r\n    },\r\n    \'filter\' => ArrayHelper::map(\\common\\models\\Squad::find()->all(), \'id\', \'squad_name\'),\r\n],\r\n//////////////////////////////////////////////\r\n[\r\n     \'label\' => \'班级\',\r\n     \'attribute\' => \'squad_id\',\r\n     \'format\' => \'raw\',\r\n     \'value\' => function ($model) {\r\n            return $model->squad->profession->profession_name . \'-\' . $model->squad->squad_name . \'班\';\r\n      },\r\n    \'filter\'=>ArrayHelper::map(Squad::find()->all(), \'id\', \'squad_name\',function ($model){return $model->profession->profession_name;}),\r\n],\r\n```', 1564886244, 1584719973),
-(77, '常用的Yii2插件', 19, '`\"yiister/yii2-gentelella\": \"~1.0\"`， 是一个后台模板插件，较简洁。\r\n\r\n`\"yii2mod/yii2-markdown\": \"*\"`，  是Markdown编辑器，界面友好。\r\n\r\n`\"yii2mod/yii2-rbac\": \"*\"`， 是一RBAC权限控制系统，其继承了基本的权限控制。\r\n\r\n`\"zhuravljov/yii2-datetime-widgets\" : \"~1.1.0\" `， 是日期选择组件，用于对日期表单规范填写。\r\n\r\n\r\n```\r\n\"yiister/yii2-gentelella\": \"~1.0\",\r\n\"yii2mod/yii2-markdown\": \"*\",\r\n\"yii2mod/yii2-rbac\": \"*\",\r\n\"zhuravljov/yii2-datetime-widgets\" : \"~1.1.0\" ,\r\n```\r\n\r\n将上述插件添加到Yii框架目录中的composer.json中，利用`composer update`指令，会自动按照依赖。', 1564886824, 1584719984),
-(78, '帝国CMS  获取当前栏目及其子栏目', 20, '网站开发时候，经常需要面对各种需求，帝国CMS是市面常用的内容管理系统，在某些场景下需要获得当前栏目的兄弟栏目或父栏目，以进行进一步的操作。\r\n\r\n```\r\n[e:loop={\"select classid,classname from {$dbtbpre}enewsclass where bclassid=\'\".$class_r[$GLOBALS[navclassid]][bclassid].\"\'  order by myorder,classid asc\",0,24,0}]\r\n<?php\r\n$classurl=sys_ReturnBqClassname($bqr,9);//取得栏目地址\r\n$cls=\'\';\r\nif($bqr[classid]==$GLOBALS[navclassid])//当前栏目ID\r\n{\r\n$cls=\'current\';\r\n}\r\n?>\r\n<li class=\'<?=$cls?>\'><a href=\'<?=$classurl?>\'><?=$bqr[classname]?></a></li>\r\n[/e:loop]\r\n```', 1564887103, 1584795345),
-(79, 'composer需要github Token的解决办法', 20, '在使用Composer管理扩展时候，加载的过程中可能会需要您输入github Token,但是界面中却无法输入或者输入不显示，解决方法如下；\r\n\r\n在用户文件夹中存在一个`auth.json`文件，用户文件夹一般路径是`C:/Users/Administrator/AppData/Roaming/Composer/auth.json`，其中Administrator是用户名，请按实际情况替换。\r\n\r\n编辑`auth.json`文件，在`github-oauth`:项中添加值，格式是：` {\"github.com\": \"oauthtoken\"}`  将使用 oauthtoken 来访问 github 上的私人仓库，并绕过 low IP-based rate 的 API 限制。\r\n\r\n其中oathtoken可以在github后台生成，请自行完成。\r\n\r\n', 1556871184, 1584795354),
-(84, '星际穿越是一部非常优秀的影片', 16, '![](/uploads/c/f/5/f/c5e74dd5261ac3.jpg)\r\n\r\n影片主要讲述了一队探险家（科学家）利用他们针对虫洞的新发现，超越人类对于太空旅行的极限，从而开始在广袤的宇宙中进行星际航行的故事，剧中男主是一位父亲，其与儿女的感情线让人泪奔。\r\n\r\n女儿是个倔强的，一直对他离开家庭到外太空寻找新的殖民星球耿耿于怀，几十年过去一直难以释怀，但也是女儿最终收到男主从五维空间发来的摩斯密码，解开了科学难题，拯救了人类，最终在年华已老，子孙满堂的情况下见到了离别多年，但依然35岁的父亲，你能想象女儿120岁，父亲35岁见面，但父亲依然说着安慰10岁的她的时候的场面吗？\r\n\r\n儿子在他离家时候答应过他要照顾家庭，许多文章对男主儿子没有过多的介绍，甚至认为是个多余的角色，这是个错误。虽然男主儿子沉默寡言，在剧中的角色也是戏份不多，但是他依然默默的履行小时对父亲的承诺，正因为这样，其一直住在男主乡下的房子里不曾离开，即使自己的两个孩子得重病，也是默默的承受。他是一个有担当的人，正因为这样，那座房子的存在，其妹妹的房间存在，男主才将摩斯密码发了回来。\r\n\r\n除了感情，剧中对于虫洞、黑洞、空间折叠、多维空间都进行了描绘，以目前的认知可能我们无法理解，但这是一部充满探险、父爱、穿越、良知的好电影。\r\n\r\n', 1565398420, 1584717145),
-(85, '阅读英文上瘾--流利阅读', 16, '在广州财大学习时，英语老师告诉我们，有个APP叫流利阅读，每日会更新一篇与社会热点相关的文章，非常适合阅读。我自己两部手机，一部5s一部小米，都下载了这个`流利阅读`。\r\n\r\n<img src=\"/uploads/blog/1565579848.jpg\" class=\"img img-responsive\" />\r\n\r\n初次登录会测试您的词汇量（估计后台会根据您的词汇量给您推送相应难度的文章，但没验证过），这个词汇量的测试只是一个大概。于是我每天早起都会习惯性的打开APP，看一下当日的文章。当然每篇文章都有很多陌生的单词（大概20个左右，这个难度很恰当），它们会出现在我的笔记中。\r\n\r\n从6约30日到现在，我坚持每日一读(从`高温对高管工作的影响`到`中国的动漫英雄美猴王和哪吒`)，并留下笔记，截至今日我的电脑上已经有41篇笔记了。\r\n\r\n通过`流利阅读`我感觉眼界宽阔了，对英文有种未知的渴求，日常在处理计算机文档的时候，已经非常积极的主动去接触英文原稿，这对我来说是一种提高。\r\n\r\n当然很多时候，我得依靠谷歌和必应完成陌生单词、复杂语句的翻译。必应词典和谷歌翻译结合用，一个助攻词汇、一个主攻句子，可以解决多数的疑难杂症。\r\n\r\n`流利阅读`，你值得一试！', 1565579559, 1565585201),
-(107, 'Yii2中带图片上传的mardown编辑器', 19, '一直钟情于Markdown编辑器，那种让人爱不释手的感觉让人欲罢不能。在博客模块建设之初，我从github引入了markdwown编辑器，可没有图片上传功能，我只能在后台写一个图片上传，获得上传地址再粘贴到编辑器中，操作比较繁琐。直到昨天，我突发奇想，搜索了github中自己中意的editor.md，竟然真的有，于是，就本地测试了下，发现听完美的。\r\n\r\n## 插件地址\r\n\r\n`https://github.com/nikitakls/yii2-editor-md`\r\n\r\n\r\n------------\r\n\r\n\r\n## 安装\r\n\r\n\r\n### 1.使用composer运行下面命令\r\n\r\n\r\n`composer require nikitakls/yii2-editor-md`或添加`\"nikitakls/yii2-editor-md\": \"*\"`到`composer.json`中\r\n\r\n\r\n### 2.在view的字段文本框中使用，代码如下\r\n\r\n\r\n```php\r\nuse nikitakls\\markdown\\EditorMdWidget;\r\n\r\n<?php \r\necho $form->field($model, \'info_md\')->widget(EditorMdWidget::className(), [\r\n                \'options\' => [// html attributes\r\n                    \'id\' => \'editor-markdown\',\r\n                ],\r\n                \'language\' => \'ru\',\r\n                \'clientOptions\' => [\r\n                    \'height\' => \'300\',\r\n                    // \'previewTheme\' => \'dark\',\r\n                    // \'editorTheme\' => \'pastel-on-dark\',\r\n                    \'markdown\' => \'\',\r\n                    //\'codeFold\' => true,\r\n                    \'syncScrolling\' => true,\r\n                    \'saveHTMLToTextarea\' => true,\r\n                    \'searchReplace\' => true,\r\n                    \'watch\' => true, \r\n                    \'htmlDecode\' => \'style,script,iframe|on*\',\r\n                    //\'toolbar\' => false,             \r\n                    \'placeholder\' => \'MarkDown\',\r\n                    \'previewCodeHighlight\' => false,  \r\n                    \'emoji\' => true,\r\n                    \'taskList\' => true,\r\n                    \'tocm\' => true, \r\n                    \'tex\' => true,   \r\n                    \'flowChart\' => true,            \r\n                    \'sequenceDiagram\' => true,     \r\n                    \'imageUpload\' => true,\r\n                    \'imageFormats\' => [\'jpg\', \'jpeg\', \'gif\', \'png\', \'bmp\', \'webp\'],\r\n                    \'imageUploadURL\' => Url::to([\'file-upload\', \'type\' => \'md\']),\r\n                    \'toolbarIcons\' => [\r\n                        \"undo\", \"redo\", \"|\",\r\n                        \"bold\", \"del\", \"italic\", \"list-ul\", \"list-ol\", \"hr\", \"|\",\r\n                        \"code\", \"code-block\", \"|\",\r\n                        \"image\", \"table\", \"link\", \"|\",\r\n                        \"html-entities\", \"|\",\r\n                        \"preview\", \"watch\",\"|\",\r\n                        \"help\"\r\n                    ],\r\n                ]\r\n            ]\r\n) ?>\r\n```\r\n\r\n\r\n> 更多的配置参数，参考 [https://pandao.github.io/editor.md/en.html]\r\n\r\n\r\n\r\n**到此为止，编辑器可以正确使用了，如果您需要图片上传功能，则继续下一步**\r\n\r\n\r\n------------\r\n\r\n\r\n### 3.在控制器中，添加以下代码\r\n\r\n\r\n```php\r\nuse nikitakls\\markdown\\actions\\UploadFileAction; \r\n\r\nclass ContentController extends Controller\r\n{\r\n\r\n    /**\r\n     * @inheritdoc\r\n     */\r\n    public function actions()\r\n    {\r\n\r\n        return [\r\n            \'upload-image\' => [\r\n                \'class\' => UploadFileAction::class,\r\n                \'url\' => \'@web/puzzle/\',\r\n                \'path\' => \'@webroot/puzzle/\',\r\n                //\'thumbPath\' => \'@filePath/thumb/puzzle/\',\r\n                //\'thumbUrl\' => \'@fileUrl/thumb/puzzle/\',\r\n                //\'thumbs\' => [\r\n                //    \'puzzle\' => [\r\n                //        \'width\' => 480,\r\n                //        \'height\' => 320,\r\n                //        \'main\' => true\r\n               //   ],\r\n               // ],\r\n                \'unique\' => true,\r\n                \'validatorOptions\' => [\r\n                    \'maxWidth\' => 1600,\r\n                    \'maxHeight\' => 1200\r\n                ]\r\n            ],\r\n        ];\r\n    }\r\n```\r\n\r\n\r\n`@web`是URL地址，`@webroot`是本地地址，需要您在`web`目录下建立相应的文件夹，并且赋予相应的权限。`upload-image`是控制器名称，需要与`view`中相应的输入表单中的`imageUploadURL`参数中一致。\r\n\r\n', 1584753300, 1584782324),
-(108, 'Linux下PHP集成环境XAMPP安装', 17, '习惯使用集成环境，经常使用[LNMP](http://www.lnmp.org \"LNMP\")，但LNMP不支持Manjaro，于是就寻找个一键包，以方便本地测试PHP，由于在Win下曾经使用过XAMPP体验不错，于是首先查阅了其官网，发现提供多个系统的版本，在此选择的是Linux系统版本。\r\n\r\n### 下载地址：\r\n\r\n`https://sourceforge.net/projects/xampp/files/XAMPP%20Linux/`\r\n\r\n### 安装\r\n\r\n下载的是一个`.sh`文件，可能无法直接安装（无执行权限，需添加执行权限），请使用下面命令添加执行权限。\r\n\r\n```shell\r\nsudo chmod u+x xampp7.4.3.sh\r\n```\r\n\r\n### 路径\r\n\r\n+ 默认`xampp`会安装到`/opt/lampp`目录下，所有的启动命令均在此目录\r\n\r\n### 命令\r\n\r\n+ 启动`xampp`,`sudo /opt/lamp/xampp start`\r\n\r\n+ 重启`xampp`,`sudo /opt/lamp/xampp restart`\r\n\r\n+ 停止`xampp`,`sudo /opt/lamp/xampp stop`\r\n\r\n界面调用一直没成功，查阅帮助文件也没有改善，但基本不影响使用。', 1584761599, 1584782470),
-(109, 'DFD图中的5个术语', 1, '为了支持需求分析中的表达分析所使用的信息，结构化分析方法提出了5个术语：`数据流`、`加工`、`数据存储`、`数据源和数据潭`。\r\n\r\n<img src=\"/uploads/blog/4/0/d/9/15e75d2ca3579e.png\" alt=\"DFD\" class=\"img-responsive\" />\r\n\r\n如上图所示：\r\n\r\n**数据流：** `数据流`表示数据的流动，可以用箭头表示其流动方向，当然也有双向流动的数据，也可以在数据流上给出标识。\r\n\r\n**加工:** `加工`即对数据进行处理，其`接受输入`，`产生输出`，一般采用`动宾结构`，如：准备机票、计算学生平均成绩等。\r\n\r\n**数据存储：**是数据的静态结构，一般要给出数据标识。\r\n\r\n**数据源和数据潭：**数据源是数据流的起点；数据潭是数据流的终点。两者均是系统之外的实体，可以是人、物或其他软件系统。\r\n\r\n理解了这5个术语，再看上图的DFD（Dataflow diagram）就方便的多了。', 1584780508, 1584795218);
+INSERT INTO `blog` (`id`, `title`, `cate_id`, `content`, `is_deleted`, `created_at`, `updated_at`) VALUES
+(1, 'Yii2在LNMP环境下500状态码的解决办法', 19, '暑期看书之余，将自己的个人站点完善下功能，于是将服务器重置了，安装了[LNMP](http://www.lnmp.org)，特意选了最新版本支持PHP7.3的，但是在部署[YiiFramework](http://www.yiiframework.com)的时候访问的时候出现500状态码，于是查询log日志，竟无异常。\r\n\r\n一般来说500错误是文件权限的问题，在网上查了资料，发现是php open_basedir 配置的问题，php不能引入其授权目录上级及其以上的文件，若是lnmp环境，位置在：`/usr/local/nginx/conf/fastcgi.conf`，查找：\r\n\r\n```\r\nfastcgi_param PHP_ADMIN_VALUE \"open_basedir=$document_root/:/tmp/:/proc/\";\r\n```\r\n\r\n然后把这段内容改成：\r\n\r\n```\r\nfastcgi_param PHP_ADMIN_VALUE \"open_basedir=/home/wwwroot/:/tmp/:/proc/\";\r\n```\r\n\r\n重新加载LNMP即可。\r\n\r\n```\r\nlnmp reload\r\n```\r\n\r\n---\r\n', 0, 1563670693, 1584719895),
+(91, 'word文件是一个压缩文件?', 1, '### 沧海一粟\r\n\r\n我是一个计算机从业者，多数时候接触文档，但最近我才知晓：word文件（就是平常我们用来处理文字的软件建立的文件）其实是一个压缩文件。\r\n\r\n当知道这个答案后，我难以言喻的心情，自己从事计算机相关行业，几乎时刻离不开文档处理，但是十多年来从未知晓word其实是一个压缩文件，瞬间觉得自己似一个无知之徒。\r\n\r\n怀着好奇的精神，我把excel（电子表格文件）文件也进行了解压缩，果不其然，也是压缩文件。\r\n\r\n于是继续探索PPT文件，结果与上述相同。\r\n\r\n---\r\n\r\n### 到底是什么文件被压缩到了一起成了word文件？\r\n\r\n我新建了一个\"docx\"文件，随意输入了几行字，插入了一张图片，然后将其解压缩，这时出现三个目录和一个xml文件\r\n\r\n+ 目录是：**`_rels`** 、**`docProps`** 、**`word`**，目录里面还包括其它文件，比如插入的图片就保存在`word`目录的`media`文件夹，其它文件多数是xml文件，没有细究，但可以猜到是保存内容、样式等的。\r\n\r\n+ 文件是`[Content_Types]` 类似索引文件\r\n\r\n---\r\n\r\n这次认识，给我好好上了一课，认识到这个之后，自己也有收获，比如提取文档内容，应该有新的思路了。\r\n\r\n', 0, 1566178064, 1584719909),
+(93, 'Yii2 ActiveForm使用技巧', 19, '```php\r\n//密码  \r\n<?= $form->field($model, \'password\')->passwordInput() ?>  \r\n//标签与提示  \r\n<?= $form->field($model, \'username\')->textInput()->hint(\'请输入你的用户名\')->label(\'用户名\') ?>  \r\n<?= $form->field($model, \'username[]\',[\'inputOptions\'=>[\'value\'=>\'abc\',\'class\'=>\'form-control\']]) ?>//默认值  \r\n//邮箱  \r\n<?= $form->field($model, \'username\')->input(\'email\') ?>  \r\n//上传  \r\n<?= $form->field($model, \'username\')->fileInput([\'multiple\'=>\'multiple\']) ?>  \r\n//多选列表  \r\n<?= $form->field($model, \'username[]\')->checkboxList([\'a\' => \'多选a\', \'b\' => \'多选b\', \'c\' => \'多选c\']) ?>  \r\n//单个选择框  \r\n<?= $form->field($model, \'username\')->checkbox([],false)->label(\'已审核\') ?> ?>  \r\n//下拉列表  \r\n<?= $form->field($model, \'username[]\')->dropDownList([\'a\' => \'多选a\', \'b\' => \'多选b\', \'c\' => \'多选c\']) ?>  \r\n<?= $form->field($model, \'username[]\')->dropDownList([\'a\' => \'多选a\', \'b\' => \'多选b\', \'c\' => \'多选c\'], [\'prompt\' => \'多选b\']) ?>  \r\n//隐藏框  \r\n<?= $form->field($model, \'username\')->hiddenInput([\'1\']) ?>  \r\nListBox  \r\n<?= $form->field($model, \'username[]\')->listBox([\'a\' => \'多选a\', \'b\' => \'多选b\', \'c\' => \'多选c\']) ?>  \r\n//单选列表  \r\n<?= $form->field($model, \'username[]\')->radioList([\'a\' => \'单选a\', \'b\' => \'单选b\', \'c\' => \'单选c\']) ?>  \r\n//多行文本  \r\n<?= $form->field($model, \'username\')->textarea() ?>  \r\n//widget扩展  \r\n<?= $form->field($model, \'username\')->widget(\\yii\\widgets\\MaskedInput::className(), [\'mask\' => \'9999/99/99\',]); ?>  \r\n```', 0, 1566305040, 1584719919),
+(98, '岭南中大 绿树成荫', 16, '七月的羊城格外的闷热，当看到中大的校门时，才会感到一丝丝凉意，这里的人文建筑无一不显示着这所名校的底蕴和光辉璀璨的历史。作为一个要在这呆一周的“学生”，我得一闲暇，漫步其中，感受这浓浓的绿意。\r\n\r\n我住在智慧酒店，离中大约2公里，在羊城高楼大厦中，导航的信号并不是很清晰，我扫码骑了一辆共享单车，约30分钟后就到了校门。培训中心照顾的很体贴，已经将我的身份信息录入了安保系统，在首次使用身份证进入并刷脸后，我就可以收起身份证，刷脸出入了。\r\n\r\n中大的校园保留了很多的古迹，多座教学楼都是写满了沧桑，但景色很是迷人。\r\n\r\n课堂上，授课的教师，是真正的大师，上课富有深度，饱有激情，让人受益匪浅。\r\n\r\n除了课堂之外，还领略了当地的风土人情、并在深圳实践了一天，一周之后，踏上了归途\r\n\r\n<img src=\"/uploads/blog/2/b/8/1/35e7716f2d4442.jpg\" class=\"img-responsive\" />\r\n\r\n<img src=\"/uploads/blog/3/4/3/6/c5e7716fc965c7.jpg\" class=\"img-responsive\" />\r\n\r\n<img src=\"/uploads/blog/7/e/8/2/c5e77170473b61.jpg\" class=\"img-responsive\" />\r\n\r\n<img src=\"/uploads/blog/b/1/7/8/e5e77170b87f2e.jpg\" class=\"img-responsive\" />\r\n\r\n<img src=\"/uploads/blog/f/0/1/7/95e7717137ea69.jpg\" class=\"img-responsive\" />\r\n\r\n<img src=\"/uploads/blog/7/3/6/4/d5e77171d896ed.jpg\" class=\"img-responsive\" />', 0, 1567257537, 1584863103),
+(110, '模块的耦合小记', 1, '**模块**：是执行一个特殊任务的一组例程以及相关的数据结构。模块通常由两部分组成：接口和模块体。\r\n\r\n**接口**给出可由其它模块或例程访问的常量、变量、函数等。接口可用于刻画各个模块之间的连接以体现其功能，并且对其它模块的设计者和使用者提供了一定的可见性。\r\n\r\n**模块体**是接口的实现。\r\n\r\n因此**模块化**自然涉及到两个问题：\r\n\r\n+ 如何将系统分解成软件模块\r\n+ 如何设计模块\r\n\r\n------------\r\n\r\n## 耦合\r\n\r\n**耦合**是对不同模块之间相互依赖程度的度量分为：无耦合、低耦合（松散耦合）、高耦合（紧密耦合）。\r\n\r\n<img src=\"/uploads/blog/2/7/4/a/75e78deff03edc.jpg\" alt=\"耦合\" class=\"img-responsive\" />\r\n\r\n## 耦合的分类\r\n\r\n\r\n------------\r\n\r\n\r\n**内容耦合** 当一个模块直接修改或操作另一个模块数据时，或一个模块不通过正常入口而转入到另一个模块时，这样的耦合被称为内容耦合。\r\n\r\n`内容耦合时最高程度的耦合，应该尽量避免使用之。`\r\n\r\n<img src=\"/uploads/blog/a/a/9/d/35e79f47478393.jpg\" alt=\"耦合\" class=\"img-responsive\" />\r\n\r\n------------\r\n\r\n**公共耦合** 两个或两个以上的模块共同引用一个全局数据项。\r\n\r\n`某一模块对全局变量的修改可能追踪困难`。\r\n\r\n<img src=\"/uploads/blog/c/7/3/a/45e79f5220af0f.jpg\" alt=\"耦合\" class=\"img-responsive\" />\r\n\r\n------------\r\n\r\n**控制耦合** 一个模块通过接口向另一个模块传递一个控制信号，接收信号的模块根据信号值进行适当的动作\r\n\r\n<img src=\"/uploads/blog/1/3/c/a/d5e79f5b579d38.jpg\" alt=\"耦合\" class=\"img-responsive\" />\r\n\r\n------------\r\n\r\n**标记耦合**：一个模块通过接口向两个模块传递一个公共参数，则接受公共参数的两个模块之间存在一个标记耦合。\r\n\r\n<img src=\"/uploads/blog/d/c/c/3/95e79f73f92fdc.jpg\" alt=\"耦合\" class=\"img-responsive\" />\r\n\r\n\r\n------------\r\n\r\n**数据耦合** ：模块之间通过参数传递数据，被称为数据耦合。\r\n\r\n`数据耦合时最低的一种耦合形式，系统中一般存在此类型的耦合，往往某些模块的输出作为另一些模块的输入`\r\n\r\n<img src=\"/uploads/blog/5/2/e/5/45e79f7acec006.jpg\" alt=\"耦合\" class=\"img-responsive\" />\r\n\r\n', 0, 1584978696, 1585095839),
+(100, 'Pure-ftp设置连接数', 17, '课堂上，进行FTP链接的时候，出现了`421 Too many connections (10) from this IP`错误，从字面看，这是同一IP的连接数超过设定值了。\r\n\r\n今天在办公室，就着手解决这问题。\r\n\r\n`lnmp`中的`pure-ftp`配置文件在`/usr/local/pureftpd/etc`下，使用`vim`打开`pure-ftpd.conf`，修改以下参数值。\r\n\r\n```\r\nMaxClientNumber 100\r\nMaxClientPerIP 10\r\n```\r\n\r\n重启即可\r\n\r\n```\r\n/etc/init.d/purftpd restart\r\n```\r\n\r\n', 0, 1568603807, 1584719935),
+(102, 'Win10 状态栏输入法多出一个“拼”字', 20, '这几天一直在折腾电脑，显卡、显示器，不停的折腾。\r\n\r\n下午 Dell的U2417到货，就匆忙的装好，重装了系统，状态栏多出一个输入法图标，印象中没有的，对于强迫症的我来说，实在是不能忍，于是搜索解决方法，终于找到一个可用的。\r\n\r\n> Windows设置>时间和语言>语言>添加语言>English(United States)安装完后，调整顺序，再将其删除。\r\n\r\n解决掉两个输入法图标的问题了，戴尔U2417非常给力。', 0, 1570445218, 1584795370),
+(104, 'Manjaro安装后的初始配置及常见问题的处理', 17, '### 换源\r\n\r\n```shell\r\nsudo pacman-mirrors -i -c China -m rank //更新镜像排名\r\n```\r\n\r\n 使用root权限编辑`/etc/pacman.conf`增加以下内容 \r\n\r\n```shell\r\n[archlinuxcn]\r\nServer = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch\r\n```\r\n\r\n 然后执行 \r\n\r\n```shell\r\nsudo pacman -Syy && sudo pacman -S archlinuxcn-keyring\r\n```\r\n\r\n### update \r\n\r\n```shell\r\nsudo pacman -Syyu\r\n```\r\n\r\n\r\n###  谷歌拼音\r\n\r\n```shell\r\nsudo pacman -S fcitx-googlepinyin\r\n\r\nsudo pacman -S fcitx-im# 全部安装\r\n\r\nsudo pacman -S fcitx-configtool# 图形化配置工具\r\n\r\n```\r\n\r\n设置中文输入法环境变量，否则中文输入法无法启动\r\n\r\n```shell\r\nsudo vi ~/.xprofile\r\n\r\nexport GTK_IM_MODULE=fcitx\r\nexport QT_IM_MODULE=fcitx\r\nexport XMODIFIERS=\"@im=fcitx\"\r\n```\r\n\r\n### Vim编辑器\r\n\r\n```\r\nsudo pacman -S vim\r\n```\r\n\r\n### Typora\r\n\r\n```text\r\nsudo pacman -S typora\r\n```\r\n\r\n### WPS\r\n\r\n```shell\r\nsudo pacman -S wps-office-cn\r\nsudo pacman -S ttf-wps-fonts\r\nsudo pacman -S wps-office-mui-zh-cn\r\n```\r\n\r\n### 网易云音乐\r\n\r\n```shell\r\nsudo pacman -S netease-cloud-music\r\n```\r\n\r\n### 深度截图\r\n\r\n```shell\r\nsudo pacman -S deepin-screenshot\r\n```\r\n\r\n------\r\n\r\n### 开始菜单不显示程序图标的解决方法\r\n\r\n```shell\r\n右键任务栏开始图标>编辑应用程序>KDE菜单编辑器>菜单栏-编辑>恢复到系统菜单\r\n```\r\n\r\n### 使用pacman提示无法锁定数据库\r\n\r\n```shell\r\n滚动升级Manjaro遇到错误如下：\r\n\r\n:: 正在同步软件包数据库...\r\n错误：无法升级 core (无法锁定数据库)\r\n错误：无法升级 extra (无法锁定数据库)\r\n错误：无法升级 community (无法锁定数据库)\r\n......\r\n错误：无法同步任何数据库\r\n\r\n解决办法，删掉之前的文件： /var/lib/pacman/db.lck\r\n```', 0, 1582188090, 1584719948),
+(75, '在Yii2中设置Navbar100%宽度', 19, 'Yii2框架高度集成了BootstrapUI，在进行后台设计的时候，为了尽量大的利用界面，通常设置为满屏，但Yii2 的上手成本较高，其默认继承的是常规状态的导航条，利用下面的方法，将其设置为100%宽度。\r\n\r\nYii2的布局文件一般存放在views目录下的layouts文件夹内，其默认名称是main.php，请在相应的目录进行查找。\r\n\r\n```\r\n NavBar::begin([\r\n        \'brandLabel\' => Yii::$app->name,\r\n        \'brandUrl\' => Yii::$app->homeUrl,\r\n        \'options\' => [\r\n            \'class\' => \'navbar-inverse navbar-fixed-top\',\r\n        ],\r\n        \'innerContainerOptions\' => [\'class\'=>\'container-fluid\'],//此行为添加\r\n    ]);\r\n```\r\n\r\n', 0, 1564886018, 1584719962),
+(76, 'Yii2 Gridview使用技巧', 19, '### Gridview\r\n\r\n开发过程中经常使用到Gridview，一些常用的功能记录一下，以便以后查阅。\r\n\r\n1.第一段代码用匿名函数返回数据表中的值\r\n\r\n2.第二段代码用匿名函数返回时间格式，此处一直没解决利用[\'date\',\"Y-m-d\"]方式有同样功效，但是时间不对？？\r\n\r\n3.第三代码用匿名函数返回关联表数据，同时利用下拉菜单进行检索。\r\n\r\n\r\n```\r\n[\r\n    \'label\'=>\'状态\',\r\n    \'attribute\' => \'status\',\r\n    \'filter\' => true, //不显示搜索框\r\n    \'value\' => function($data) {\r\n        return $data->status == 10 ?  \'正常\' : \'禁止\'; }\r\n],\r\n/////////////////////////////////////////////////\r\n[\r\n    \'label\'=>\'注册日期\',\r\n    \'attribute\' => \'created_at\',\r\n    \'filter\' => false, //不显示搜索框\r\n    \'value\' => function($data) {\r\n        return date(\'Y-m-d H:i:s\',$data->created_at); }\r\n],\r\n///////////////////////////////////////////////////////            \r\n[\r\n    \'label\' => \'班级\' ,\r\n    \'attribute\' =>\'squad_id\',\r\n    \'value\' => function ($model) {\r\n        return $model->squad->squad_name;\r\n    },\r\n    \'filter\' => ArrayHelper::map(\\common\\models\\Squad::find()->all(), \'id\', \'squad_name\'),\r\n],\r\n//////////////////////////////////////////////\r\n[\r\n     \'label\' => \'班级\',\r\n     \'attribute\' => \'squad_id\',\r\n     \'format\' => \'raw\',\r\n     \'value\' => function ($model) {\r\n            return $model->squad->profession->profession_name . \'-\' . $model->squad->squad_name . \'班\';\r\n      },\r\n    \'filter\'=>ArrayHelper::map(Squad::find()->all(), \'id\', \'squad_name\',function ($model){return $model->profession->profession_name;}),\r\n],\r\n```', 0, 1564886244, 1584719973),
+(77, '常用的Yii2插件', 19, '`\"yiister/yii2-gentelella\": \"~1.0\"`， 是一个后台模板插件，较简洁。\r\n\r\n`\"yii2mod/yii2-markdown\": \"*\"`，  是Markdown编辑器，界面友好。\r\n\r\n`\"yii2mod/yii2-rbac\": \"*\"`， 是一RBAC权限控制系统，其继承了基本的权限控制。\r\n\r\n`\"zhuravljov/yii2-datetime-widgets\" : \"~1.1.0\" `， 是日期选择组件，用于对日期表单规范填写。\r\n\r\n\r\n```\r\n\"yiister/yii2-gentelella\": \"~1.0\",\r\n\"yii2mod/yii2-markdown\": \"*\",\r\n\"yii2mod/yii2-rbac\": \"*\",\r\n\"zhuravljov/yii2-datetime-widgets\" : \"~1.1.0\" ,\r\n```\r\n\r\n将上述插件添加到Yii框架目录中的composer.json中，利用`composer update`指令，会自动按照依赖。', 0, 1564886824, 1584719984),
+(78, '帝国CMS  获取当前栏目及其子栏目', 20, '网站开发时候，经常需要面对各种需求，帝国CMS是市面常用的内容管理系统，在某些场景下需要获得当前栏目的兄弟栏目或父栏目，以进行进一步的操作。\r\n\r\n```\r\n[e:loop={\"select classid,classname from {$dbtbpre}enewsclass where bclassid=\'\".$class_r[$GLOBALS[navclassid]][bclassid].\"\'  order by myorder,classid asc\",0,24,0}]\r\n<?php\r\n$classurl=sys_ReturnBqClassname($bqr,9);//取得栏目地址\r\n$cls=\'\';\r\nif($bqr[classid]==$GLOBALS[navclassid])//当前栏目ID\r\n{\r\n$cls=\'current\';\r\n}\r\n?>\r\n<li class=\'<?=$cls?>\'><a href=\'<?=$classurl?>\'><?=$bqr[classname]?></a></li>\r\n[/e:loop]\r\n```', 0, 1564887103, 1584795345),
+(79, 'composer需要github Token的解决办法', 20, '在使用Composer管理扩展时候，加载的过程中可能会需要您输入github Token,但是界面中却无法输入或者输入不显示，解决方法如下；\r\n\r\n在用户文件夹中存在一个`auth.json`文件，用户文件夹一般路径是`C:/Users/Administrator/AppData/Roaming/Composer/auth.json`，其中Administrator是用户名，请按实际情况替换。\r\n\r\n编辑`auth.json`文件，在`github-oauth`:项中添加值，格式是：` {\"github.com\": \"oauthtoken\"}`  将使用 oauthtoken 来访问 github 上的私人仓库，并绕过 low IP-based rate 的 API 限制。\r\n\r\n其中oathtoken可以在github后台生成，请自行完成。\r\n\r\n', 0, 1556871184, 1584795354),
+(84, '星际穿越是一部非常优秀的影片', 16, '![](/uploads/c/f/5/f/c5e74dd5261ac3.jpg)\r\n\r\n影片主要讲述了一队探险家（科学家）利用他们针对虫洞的新发现，超越人类对于太空旅行的极限，从而开始在广袤的宇宙中进行星际航行的故事，剧中男主是一位父亲，其与儿女的感情线让人泪奔。\r\n\r\n女儿是个倔强的，一直对他离开家庭到外太空寻找新的殖民星球耿耿于怀，几十年过去一直难以释怀，但也是女儿最终收到男主从五维空间发来的摩斯密码，解开了科学难题，拯救了人类，最终在年华已老，子孙满堂的情况下见到了离别多年，但依然35岁的父亲，你能想象女儿120岁，父亲35岁见面，但父亲依然说着安慰10岁的她的时候的场面吗？\r\n\r\n儿子在他离家时候答应过他要照顾家庭，许多文章对男主儿子没有过多的介绍，甚至认为是个多余的角色，这是个错误。虽然男主儿子沉默寡言，在剧中的角色也是戏份不多，但是他依然默默的履行小时对父亲的承诺，正因为这样，其一直住在男主乡下的房子里不曾离开，即使自己的两个孩子得重病，也是默默的承受。他是一个有担当的人，正因为这样，那座房子的存在，其妹妹的房间存在，男主才将摩斯密码发了回来。\r\n\r\n除了感情，剧中对于虫洞、黑洞、空间折叠、多维空间都进行了描绘，以目前的认知可能我们无法理解，但这是一部充满探险、父爱、穿越、良知的好电影。\r\n\r\n', 0, 1565398420, 1584717145),
+(85, '阅读英文上瘾--流利阅读', 16, '在广州财大学习时，英语老师告诉我们，有个APP叫流利阅读，每日会更新一篇与社会热点相关的文章，非常适合阅读。我自己两部手机，一部5s一部小米，都下载了这个`流利阅读`。\r\n\r\n<img src=\"/uploads/blog/1565579848.jpg\" class=\"img img-responsive\" />\r\n\r\n初次登录会测试您的词汇量（估计后台会根据您的词汇量给您推送相应难度的文章，但没验证过），这个词汇量的测试只是一个大概。于是我每天早起都会习惯性的打开APP，看一下当日的文章。当然每篇文章都有很多陌生的单词（大概20个左右，这个难度很恰当），它们会出现在我的笔记中。\r\n\r\n从6约30日到现在，我坚持每日一读(从`高温对高管工作的影响`到`中国的动漫英雄美猴王和哪吒`)，并留下笔记，截至今日我的电脑上已经有41篇笔记了。\r\n\r\n通过`流利阅读`我感觉眼界宽阔了，对英文有种未知的渴求，日常在处理计算机文档的时候，已经非常积极的主动去接触英文原稿，这对我来说是一种提高。\r\n\r\n当然很多时候，我得依靠谷歌和必应完成陌生单词、复杂语句的翻译。必应词典和谷歌翻译结合用，一个助攻词汇、一个主攻句子，可以解决多数的疑难杂症。\r\n\r\n`流利阅读`，你值得一试！', 0, 1565579559, 1565585201),
+(107, 'Yii2中带图片上传的mardown编辑器', 19, '一直钟情于Markdown编辑器，那种让人爱不释手的感觉让人欲罢不能。在博客模块建设之初，我从github引入了markdwown编辑器，可没有图片上传功能，我只能在后台写一个图片上传，获得上传地址再粘贴到编辑器中，操作比较繁琐。直到昨天，我突发奇想，搜索了github中自己中意的editor.md，竟然真的有，于是，就本地测试了下，发现听完美的。\r\n\r\n## 插件地址\r\n\r\n`https://github.com/nikitakls/yii2-editor-md`\r\n\r\n\r\n------------\r\n\r\n\r\n## 安装\r\n\r\n\r\n### 1.使用composer运行下面命令\r\n\r\n\r\n`composer require nikitakls/yii2-editor-md`或添加`\"nikitakls/yii2-editor-md\": \"*\"`到`composer.json`中\r\n\r\n\r\n### 2.在view的字段文本框中使用，代码如下\r\n\r\n\r\n```php\r\nuse nikitakls\\markdown\\EditorMdWidget;\r\n\r\n<?php \r\necho $form->field($model, \'info_md\')->widget(EditorMdWidget::className(), [\r\n                \'options\' => [// html attributes\r\n                    \'id\' => \'editor-markdown\',\r\n                ],\r\n                \'language\' => \'ru\',\r\n                \'clientOptions\' => [\r\n                    \'height\' => \'300\',\r\n                    // \'previewTheme\' => \'dark\',\r\n                    // \'editorTheme\' => \'pastel-on-dark\',\r\n                    \'markdown\' => \'\',\r\n                    //\'codeFold\' => true,\r\n                    \'syncScrolling\' => true,\r\n                    \'saveHTMLToTextarea\' => true,\r\n                    \'searchReplace\' => true,\r\n                    \'watch\' => true, \r\n                    \'htmlDecode\' => \'style,script,iframe|on*\',\r\n                    //\'toolbar\' => false,             \r\n                    \'placeholder\' => \'MarkDown\',\r\n                    \'previewCodeHighlight\' => false,  \r\n                    \'emoji\' => true,\r\n                    \'taskList\' => true,\r\n                    \'tocm\' => true, \r\n                    \'tex\' => true,   \r\n                    \'flowChart\' => true,            \r\n                    \'sequenceDiagram\' => true,     \r\n                    \'imageUpload\' => true,\r\n                    \'imageFormats\' => [\'jpg\', \'jpeg\', \'gif\', \'png\', \'bmp\', \'webp\'],\r\n                    \'imageUploadURL\' => Url::to([\'file-upload\', \'type\' => \'md\']),\r\n                    \'toolbarIcons\' => [\r\n                        \"undo\", \"redo\", \"|\",\r\n                        \"bold\", \"del\", \"italic\", \"list-ul\", \"list-ol\", \"hr\", \"|\",\r\n                        \"code\", \"code-block\", \"|\",\r\n                        \"image\", \"table\", \"link\", \"|\",\r\n                        \"html-entities\", \"|\",\r\n                        \"preview\", \"watch\",\"|\",\r\n                        \"help\"\r\n                    ],\r\n                ]\r\n            ]\r\n) ?>\r\n```\r\n\r\n\r\n> 更多的配置参数，参考 [https://pandao.github.io/editor.md/en.html]\r\n\r\n\r\n\r\n**到此为止，编辑器可以正确使用了，如果您需要图片上传功能，则继续下一步**\r\n\r\n\r\n------------\r\n\r\n\r\n### 3.在控制器中，添加以下代码\r\n\r\n\r\n```php\r\nuse nikitakls\\markdown\\actions\\UploadFileAction; \r\n\r\nclass ContentController extends Controller\r\n{\r\n\r\n    /**\r\n     * @inheritdoc\r\n     */\r\n    public function actions()\r\n    {\r\n\r\n        return [\r\n            \'upload-image\' => [\r\n                \'class\' => UploadFileAction::class,\r\n                \'url\' => \'@web/puzzle/\',\r\n                \'path\' => \'@webroot/puzzle/\',\r\n                //\'thumbPath\' => \'@filePath/thumb/puzzle/\',\r\n                //\'thumbUrl\' => \'@fileUrl/thumb/puzzle/\',\r\n                //\'thumbs\' => [\r\n                //    \'puzzle\' => [\r\n                //        \'width\' => 480,\r\n                //        \'height\' => 320,\r\n                //        \'main\' => true\r\n               //   ],\r\n               // ],\r\n                \'unique\' => true,\r\n                \'validatorOptions\' => [\r\n                    \'maxWidth\' => 1600,\r\n                    \'maxHeight\' => 1200\r\n                ]\r\n            ],\r\n        ];\r\n    }\r\n```\r\n\r\n\r\n`@web`是URL地址，`@webroot`是本地地址，需要您在`web`目录下建立相应的文件夹，并且赋予相应的权限。`upload-image`是控制器名称，需要与`view`中相应的输入表单中的`imageUploadURL`参数中一致。\r\n\r\n', 0, 1584753300, 1584782324),
+(108, 'Linux下PHP集成环境XAMPP安装', 17, '习惯使用集成环境，经常使用[LNMP](http://www.lnmp.org \"LNMP\")，但LNMP不支持Manjaro，于是就寻找个一键包，以方便本地测试PHP，由于在Win下曾经使用过XAMPP体验不错，于是首先查阅了其官网，发现提供多个系统的版本，在此选择的是Linux系统版本。\r\n\r\n### 下载地址：\r\n\r\n`https://sourceforge.net/projects/xampp/files/XAMPP%20Linux/`\r\n\r\n### 安装\r\n\r\n下载的是一个`.sh`文件，可能无法直接安装（无执行权限，需添加执行权限），请使用下面命令添加执行权限。\r\n\r\n```shell\r\nsudo chmod u+x xampp7.4.3.sh\r\n```\r\n\r\n### 路径\r\n\r\n+ 默认`xampp`会安装到`/opt/lampp`目录下，所有的启动命令均在此目录\r\n\r\n### 命令\r\n\r\n+ 启动`xampp`,`sudo /opt/lamp/xampp start`\r\n\r\n+ 重启`xampp`,`sudo /opt/lamp/xampp restart`\r\n\r\n+ 停止`xampp`,`sudo /opt/lamp/xampp stop`\r\n\r\n界面调用一直没成功，查阅帮助文件也没有改善，但基本不影响使用。', 0, 1584761599, 1584782470),
+(109, 'DFD图中的5个术语', 1, '为了支持需求分析中的表达分析所使用的信息，结构化分析方法提出了5个术语：`数据流`、`加工`、`数据存储`、`数据源和数据潭`。\r\n\r\n<img src=\"/uploads/blog/4/0/d/9/15e75d2ca3579e.png\" alt=\"DFD\" class=\"img-responsive\" />\r\n\r\n如上图所示：\r\n\r\n**数据流：** `数据流`表示数据的流动，可以用箭头表示其流动方向，当然也有双向流动的数据，也可以在数据流上给出标识。\r\n\r\n**加工:** `加工`即对数据进行处理，其`接受输入`，`产生输出`，一般采用`动宾结构`，如：准备机票、计算学生平均成绩等。\r\n\r\n**数据存储：**是数据的静态结构，一般要给出数据标识。\r\n\r\n**数据源和数据潭：**数据源是数据流的起点；数据潭是数据流的终点。两者均是系统之外的实体，可以是人、物或其他软件系统。\r\n\r\n理解了这5个术语，再看上图的DFD（Dataflow diagram）就方便的多了。', 0, 1584780508, 1584795218),
+(111, '模块中的内聚', 1, '**内聚** ：是一个模块内部各成分之间相互关联程度的度量。高内聚是指一个模块中各部分之间存在着很强的依赖；低内聚是指一个模块各部分之间存在较少的依赖。\r\n\r\n`在进行系统模块结构设计时，应尽量使每个模块具有高内聚，这样可以使模块的各个成分都与该模块的功能直接相关。`\r\n\r\n常见的内聚类型：偶然内聚、逻辑内聚、时间内聚、过程内聚、通信内聚、顺序内聚。\r\n\r\n\r\n------------\r\n\r\n1.**偶然内聚**：一个模块的各成分之间基本不存在任何关系，则称为偶然内聚。\r\n\r\n<img src=\"/uploads/blog/5/3/c/c/a5e7b33a19521e.jpg\" class=\"img-responsive\" />\r\n\r\n\r\n------------\r\n\r\n2.**逻辑内聚**：几个逻辑上相关的功能被放在同一模块中。例如，一个模块读取不同类型的外设输入(卡片、磁带、磁盘、键盘等)。\r\n\r\n<img src=\"/uploads/blog/6/d/8/a/85e7b3486989e9.jpg\" class=\"img-responsive\" />\r\n\r\n------------\r\n\r\n\r\n\r\n3.**时间内聚**：一个模块完成的功能必须在同一时间内执行，但这些功能只是因为时间因素关联在一起，则称为时间内聚。\r\n\r\n<img src=\"/uploads/blog/8/b/2/f/35e7b355933c45.jpg\"  class=\"img-responsive\" />\r\n\r\n\r\n------------\r\n\r\n4.**过程内聚**：如果一个模块内部的处理成分是相关的，而且这些处理必须以特定的次序执行，则称为过程内聚。\r\n\r\n<img src=\"/uploads/blog/6/5/c/c/d5e7b366c339fd.jpg\"  class=\"img-responsive\" />\r\n\r\n\r\n------------\r\n\r\n5.**通信内聚**：如果一个模块的所有成分都操作同一数据集或生成同一数据集，则称为通信内聚。\r\n\r\n<img src=\"/uploads/blog/6/9/2/3/65e7b375532a96.jpg\"  class=\"img-responsive\" />\r\n\r\n\r\n------------\r\n\r\n6.**顺序内聚**：如果一个模块的各个成分都与同一个功能密切相关，而且一个成分的输出作为另一个成分的输入，则称为顺序内聚。\r\n\r\n与过程内聚的区别：`一个成分的输出作为另一个成分的输入`。\r\n\r\n<img src=\"/uploads/blog/c/5/8/e/15e7b3c6b367db.jpg\"  class=\"img-responsive\" />\r\n\r\n------------\r\n\r\n\r\n7.**功能内聚**：模块的所有成分对于完成单一的功能都是基本的。`这是最理想的内聚。`\r\n\r\n<img src=\"/uploads/blog/5/f/c/4/b5e7b3d171382d.jpg\"  class=\"img-responsive\" />\r\n', 0, 1585132036, 1585134897);
 
 -- --------------------------------------------------------
 
@@ -598,18 +630,25 @@ INSERT INTO `blog_cate` (`id`, `cate_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- 表的结构 `chapter`
+-- 表的结构 `node`
 --
 
-CREATE TABLE `chapter` (
+CREATE TABLE `node` (
   `id` int(11) NOT NULL,
   `title` varchar(100) NOT NULL COMMENT '标题',
   `content` text NOT NULL COMMENT '内容',
-  `chap_id` int(11) NOT NULL DEFAULT '0' COMMENT '章节标题',
-  `sort_key` int(11) NOT NULL COMMENT '排序码',
+  `subject_id` int(11) NOT NULL DEFAULT '0' COMMENT '章节标题',
   `created_at` int(11) NOT NULL COMMENT '创建时间',
   `updated_at` int(11) NOT NULL COMMENT '更新时间'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='教程表';
+
+--
+-- 转存表中的数据 `node`
+--
+
+INSERT INTO `node` (`id`, `title`, `content`, `subject_id`, `created_at`, `updated_at`) VALUES
+(1, '1.1 PHP简介', '啊手动阀手动阀', 4, 1584973867, 1584973885),
+(2, '1.2 PHP环境搭建', '## 你好', 4, 1584973904, 1584973904);
 
 -- --------------------------------------------------------
 
@@ -784,9 +823,10 @@ INSERT INTO `squad` (`id`, `squad_name`, `status`, `description`, `created_at`, 
 
 CREATE TABLE `subject` (
   `id` int(11) NOT NULL,
-  `subject_id` int(11) DEFAULT '0' COMMENT '所属科目',
+  `subject_id` int(11) NOT NULL DEFAULT '0' COMMENT '科目/章节编号',
   `title` varchar(100) NOT NULL COMMENT '书名或章节名',
   `info` varchar(200) NOT NULL COMMENT '简介',
+  `is_chapter` int(1) NOT NULL DEFAULT '1' COMMENT '是否章节：1是0否',
   `created_at` int(11) NOT NULL COMMENT '创建时间',
   `updated_at` int(11) NOT NULL COMMENT '更新时间'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -795,8 +835,21 @@ CREATE TABLE `subject` (
 -- 转存表中的数据 `subject`
 --
 
-INSERT INTO `subject` (`id`, `subject_id`, `title`, `info`, `created_at`, `updated_at`) VALUES
-(1, 0, 'PHP基础入门', 'PHP :HyperText Processor，是一种流行的WEB开发语言，其采用面向对象的设计模式，入门简单、部署便捷，在WEB开发市场占有较高的份额', 1584929468, 1584929468);
+INSERT INTO `subject` (`id`, `subject_id`, `title`, `info`, `is_chapter`, `created_at`, `updated_at`) VALUES
+(1, 0, 'PHP基础入门', 'PHP :HyperText Processor，是一种流行的WEB开发语言，其采用面向对象的设计模式，入门简单、部署便捷，在WEB开发市场占有较高的份额', 0, 1584929468, 1584929468),
+(2, 0, 'Linux基础', 'Linux基础知识', 1, 1584950272, 1584950272),
+(3, 2, '第一章 Linux简介', '本章将讲解。。。。', 1, 1584950665, 1584950665),
+(4, 1, '第1章 PHP开篇', 'PHP是一种服务器端的脚本编程语言。', 1, 1584950750, 1584950750),
+(5, 1, '第2章 PHP基本语法', '掌握好PHP基础语法是学好PHP的第一步。', 1, 1584950817, 1584950817),
+(6, 1, '第3章 函数', '啊手动阀', 1, 1585019183, 1585019309),
+(7, 1, '第4章 数组', '数组', 1, 1585019331, 1585019331),
+(8, 1, '第5章 错误处理及调试', '收到', 1, 1585019356, 1585019356),
+(9, 1, '第6章 HTTP协议', '士大夫', 1, 1585019397, 1585019397),
+(10, 1, '第7章 MySQL', '的', 1, 1585019411, 1585019411),
+(11, 1, '第8章 正则表达式', '是', 1, 1585019428, 1585019428),
+(12, 1, '第9章 文件操作', '士大夫', 1, 1585019449, 1585019449),
+(13, 1, '第10章 面向对象编程', '士大夫', 1, 1585019471, 1585019471),
+(14, 1, '第11章 会话技术', '士大夫 ', 1, 1585019493, 1585019493);
 
 -- --------------------------------------------------------
 
@@ -1139,7 +1192,7 @@ CREATE TABLE `teaching_log` (
 --
 
 INSERT INTO `teaching_log` (`id`, `squad_id`, `content`, `created_at`, `updated_at`) VALUES
-(2, 2, '2019年9月10日\r\n-------------\r\n+ 课堂讲解内容过多，练习时间过少。\r\n\r\n+ 软件安装可能未完成（尝试安装原版）\r\n\r\n+ 有一位同学旷课，需要再次上课的时候问清楚原因\r\n\r\n+ 有几台电脑无法启动，需要再次查验。\r\n\r\n+ FTP服务存在问题，课后解决【已解决】\r\n\r\n+ 点评上节课作业，因为系统问题，导致作业9.13日才能提交，截止日延长一天\r\n\r\n+ 作业在markdown语法有较多的弱点。\r\n----------------', 1568104200, 1584759040),
+(2, 2, '+ 课堂讲解内容过多，练习时间过少。\r\n\r\n+ 软件安装可能未完成（尝试安装原版）\r\n\r\n+ 有一位同学旷课，需要再次上课的时候问清楚原因\r\n\r\n+ 有几台电脑无法启动，需要再次查验。\r\n\r\n+ FTP服务存在问题，课后解决【已解决】\r\n\r\n+ 点评上节课作业，因为系统问题，导致作业9.13日才能提交，截止日延长一天\r\n\r\n+ 作业在markdown语法有较多的弱点。\r\n----------------', 1568104200, 1585143810),
 (3, 2, '+ 学号136、140链接FTP有问题。\r\n\r\n+ 配置服务器FTP链接数量上限。\r\n\r\n+ 学习气氛尚可，部分同学玩手机\r\n\r\n+ 无法课堂上传的，带回去上传。\r\n\r\n+ 传达了求职中github的重要性。', 1568509003, 1568536689),
 (4, 2, '+ 传授了一点点emet语法知识  \r\n     - https://docs.emmet.io/cheat-sheet/ 官方\r\n     - http://code.z01.com/Emmet/ 中文\r\n+ 将作业侧重于HTML基础积累\r\n+ 重点传达了内存对计算机从业者的重要性', 1568876267, 1569223560),
 (5, 2, '## 2019-10-08\r\n\r\n讲述了get与post方法', 1570604238, 1570604238),
@@ -1272,9 +1325,9 @@ ALTER TABLE `blog_cate`
   ADD PRIMARY KEY (`id`);
 
 --
--- 表的索引 `chapter`
+-- 表的索引 `node`
 --
-ALTER TABLE `chapter`
+ALTER TABLE `node`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1336,7 +1389,7 @@ ALTER TABLE `user`
 -- 使用表AUTO_INCREMENT `blog`
 --
 ALTER TABLE `blog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
 
 --
 -- 使用表AUTO_INCREMENT `blog_cate`
@@ -1345,10 +1398,10 @@ ALTER TABLE `blog_cate`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
--- 使用表AUTO_INCREMENT `chapter`
+-- 使用表AUTO_INCREMENT `node`
 --
-ALTER TABLE `chapter`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `node`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- 使用表AUTO_INCREMENT `present`
@@ -1372,7 +1425,7 @@ ALTER TABLE `squad`
 -- 使用表AUTO_INCREMENT `subject`
 --
 ALTER TABLE `subject`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- 使用表AUTO_INCREMENT `task`
@@ -1390,7 +1443,7 @@ ALTER TABLE `task_stat`
 -- 使用表AUTO_INCREMENT `teaching_log`
 --
 ALTER TABLE `teaching_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '编号', AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '编号', AUTO_INCREMENT=12;
 
 --
 -- 使用表AUTO_INCREMENT `user`
