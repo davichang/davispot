@@ -66,10 +66,4 @@ class Subject extends \yii\db\ActiveRecord
             ],
         ];
     }
-
-    //获取班级
-    public function getSquad()
-    {
-        return $this->hasOne(Squad::className(),['id' => 'squad_id']);
-    }
 }
