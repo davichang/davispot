@@ -12,6 +12,7 @@ use yii\db\ActiveRecord;
  * @property int $id
  * @property string $title 标题
  * @property string $content 内容
+ * @property string $is_deleted 是否删除
  * @property int $created_at 创建时间
  * @property int $updated_at 更新时间
  * @property int $cate_id 更新时间
@@ -49,6 +50,7 @@ class Blog extends \yii\db\ActiveRecord
             'title' => '标题',
             'cate_id' => '分类',
             'content' => '内容',
+            'is_deleted' => '是否删除',
             'created_at' => '创建时间',
             'updated_at' => '更新时间',
         ];

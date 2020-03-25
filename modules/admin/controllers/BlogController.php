@@ -136,9 +136,12 @@ class BlogController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
-
-        return $this->redirect(['index']);
+        $model = $this->findModel($id);
+        $model->is_deleted = 1;
+        if($model->save()){
+            return $this->redirect(['index']);
+        }
+        return $this->redirect(['index']);  
     }
 
     /**
