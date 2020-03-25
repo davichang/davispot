@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\TeachingLog */
 
-$this->title = 'Create Teaching Log';
+$this->title = '新建教志';
 $this->params['breadcrumbs'][] = ['label' => 'Teaching Logs', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

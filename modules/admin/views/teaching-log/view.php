@@ -2,11 +2,13 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use app\models\Squad;
+use yii\helpers\Markdown;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\TeachingLog */
 
-$this->title = $model->id;
+$this->title = '教志';
 $this->params['breadcrumbs'][] = ['label' => 'Teaching Logs', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
@@ -14,27 +16,13 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="teaching-log-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
-    </p>
-
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'id',
-            'squad_id',
-            'content:ntext',
-            'created_at',
-            'updated_at',
-        ],
-    ]) ?>
-
+    <hr>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">班级：<?= Squad::find()->where(['id' => $model->squad_id])->one()->squad_name?> 记录日期：<?= date("Y-m-d",$model->created_at) ?> 更新日期: <?= date("Y-m-d",$model->updated_at) ?></h3>
+        </div>
+        <div class="panel-body">
+        <?= Markdown::process($model->content,'gfm') ?>
+        </div>
+    </div>
 </div>

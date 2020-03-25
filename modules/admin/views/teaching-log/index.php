@@ -8,7 +8,7 @@ use yii\helpers\ArrayHelper;
 /* @var $searchModel app\modules\admin\models\search\TeachingLogSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Teaching Logs';
+$this->title = '教志';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="teaching-log-index">
@@ -16,8 +16,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Teaching Log', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('添加教志', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
+    <hr />
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
@@ -40,12 +41,16 @@ $this->params['breadcrumbs'][] = $this->title;
                 'label' => '创建时间',
                 'attribute' => 'created_at',
                 'value' => function($model){
-                    return date("Y-m-d H:i:s",$model->created_at);
-                }
+                    return date("Y-m-d",$model->created_at)." [".date("l",$model->created_at)."] ";
+                },
+                'filter' => false,
             ],
 
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '{view}{update}',
+            ],
         ],
     ]); ?>
 

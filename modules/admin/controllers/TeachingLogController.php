@@ -8,7 +8,6 @@ use app\modules\admin\models\search\TeachingLogSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use nikitakls\markdown\actions\UploadFileAction;
 
 /**
  * TeachingLogController implements the CRUD actions for TeachingLog model.
@@ -26,35 +25,6 @@ class TeachingLogController extends Controller
                 'actions' => [
                     'delete' => ['POST'],
                 ],
-            ],
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function actions()
-    {
-
-        return [
-            'upload-image' => [
-                'class' => UploadFileAction::class,
-                'url' => '@web/uploads/teaching-log',
-                'path' => '@webroot/uploads/teaching-log',
-                // 'thumbPath' => '@filePath/thumb/puzzle/',
-                // 'thumbUrl' => '@fileUrl/thumb/puzzle/',
-                // 'thumbs' => [
-                //     'puzzle' => [
-                //         'width' => 480,
-                //         'height' => 320,
-                //         'main' => true
-                //     ],
-                // ],
-                'unique' => true,
-                'validatorOptions' => [
-                    'maxWidth' => 1600,
-                    'maxHeight' => 1200
-                ]
             ],
         ];
     }

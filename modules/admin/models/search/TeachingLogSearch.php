@@ -4,12 +4,12 @@ namespace app\modules\admin\models\search;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Subject;
+use app\models\TeachingLog;
 
 /**
- * TeachingLogSearch represents the model behind the search form of `app\models\Subject`.
+ * TeachingLogSearch represents the model behind the search form of `app\models\TeachingLog`.
  */
-class TeachingLogSearch extends Subject
+class TeachingLogSearch extends TeachingLog
 {
     /**
      * {@inheritdoc}
@@ -17,8 +17,8 @@ class TeachingLogSearch extends Subject
     public function rules()
     {
         return [
-            [['id', 'subject_id', 'created_at', 'updated_at'], 'integer'],
-            [['title', 'info'], 'safe'],
+            [['id', 'squad_id', 'created_at', 'updated_at'], 'integer'],
+            [['content'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class TeachingLogSearch extends Subject
      */
     public function search($params)
     {
-        $query = Subject::find();
+        $query = TeachingLog::find();
 
         // add conditions that should always apply here
 
@@ -59,13 +59,12 @@ class TeachingLogSearch extends Subject
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'subject_id' => $this->subject_id,
+            'squad_id' => $this->squad_id,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);
 
-        $query->andFilterWhere(['like', 'title', $this->title])
-            ->andFilterWhere(['like', 'info', $this->info]);
+        $query->andFilterWhere(['like', 'content', $this->content]);
 
         return $dataProvider;
     }
