@@ -44,8 +44,8 @@ class TeachingLog extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'squad_id' => 'Squad ID',
-            'content' => 'Content',
+            'squad_id' => '班级',
+            'content' => '内容',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];
