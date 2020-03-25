@@ -66,7 +66,7 @@ class BlogController extends Controller
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Blog::find(),
+            'query' => Blog::find()->where(['is_deleted' => 0])->orderBy(['id' => SORT_ASC]),
         ]);
 
         return $this->render('index', [
