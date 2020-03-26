@@ -6,12 +6,20 @@ use app\models\Blog;
 use app\models\BlogCate;
 use yii\data\Pagination;
 use app\controllers\common\BaseController;
-
+use yii\web\NotFoundHttpException;
 use Yii;
 
 class BlogController extends BaseController
 {
     public function behaviors()
+    {
+        return [];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function actions()
     {
         return [];
     }
@@ -52,12 +60,10 @@ class BlogController extends BaseController
             $model = Blog::findOne($id);
             if($model){
                 return $this->render('view',['model' => $model]);
-            }else{
-                return $this->render('error');
             }
         }
 
-        throw new \yii\web\NotFoundHttpException;
+        throw new NotFoundHttpException('The page not exists.');
 	
     }
 
