@@ -48,12 +48,17 @@ class BlogController extends BaseController
 
     public function actionView($id)
     {
-        $model = Blog::findOne($id);
-        if($model){
-            return $this->render('view',['model' => $model]);
-        }else{
-            return $this->render('error');
+        if($id){    
+            $model = Blog::findOne($id);
+            if($model){
+                return $this->render('view',['model' => $model]);
+            }else{
+                return $this->render('error');
+            }
         }
+
+        throw new \yii\web\NotFoundHttpException;
+	
     }
 
 }
