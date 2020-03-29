@@ -83,13 +83,28 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
                                     ["label" => "后台首页", "url" => Url::toRoute(['/admin']), "icon" => "home"],
 
                                     ["label" => "博客", "url" => Url::to(['/admin/blog']), "icon" => "files-o"],
-                                    ["label" => "教程", "url" => Url::to(['/admin/subject']), "icon" => "files-o"],
-
-                                    ["label" => "班级", "url" => Url::to(['/admin/squad']), "icon" => "paw"],
+                                    ["label" => "教程", "url" => Url::to(['/admin/subject']), "icon" => "book"],
 
                                     [
 
                                         "label" => "考勤",
+
+                                        "icon" => "users",
+
+                                        "url" => "#",
+
+                                        "items" => [
+
+                                            ["label" => "点名考勤", "url" =>Url::to(['/admin/rollcall/index'])],
+
+                                            ["label" => "考勤统计", "url" =>Url::to(['/admin/present/index'])],
+
+                                        ],
+
+                                    ],
+                                    [
+
+                                        "label" => "提问",
 
                                         "icon" => "check-square-o",
 
@@ -97,9 +112,9 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
 
                                         "items" => [
 
-                                            ["label" => "点名考勤", "url" =>['/admin/rollcall/index']],
+                                            ["label" => "课堂提问", "url" =>Url::to(['/admin/quiz/index'])],
 
-                                            ["label" => "考勤统计", "url" =>['/admin/present/index']],
+                                            ["label" => "提问统计", "url" =>  Url::to(['/admin/quiz/stat'])],
 
                                         ],
 
@@ -109,39 +124,17 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
 
                                         "label" => "任务中心",
 
-                                        "icon" => "th",
+                                        "icon" => "tasks",
 
                                         "url" => "#",
 
                                         "items" => [
 
-                                            ["label" => "管理任务", "url" =>['/admin/task/index']],
+                                            ["label" => "管理任务", "url" =>  Url::to(['/admin/task/index'])],
 
-                                            ["label" => "批阅任务", "url" =>['/admin/task-stat/index']],
+                                            ["label" => "批阅任务", "url" =>  Url::to(['/admin/task-stat/index'])],
 
-                                            ["label" => "任务统计", "url" =>['/admin/task-analys/index']],
-
-                                        ],
-
-                                    ],
-
-                                    [
-
-                                        "label" => "RBAC",
-
-                                        "icon" => "th",
-
-                                        "url" => "#",
-
-                                        "items" => [
-
-                                            ["label" => "角色", "url" =>['/rbac/role/index']],
-
-                                            ["label" => "路由", "url" =>['/rbac/route/index']],
-
-                                            ["label" => "权限", "url" =>['/rbac/permission/index']],
-
-                                            ["label" => "分配", "url" =>['/rbac/assignment/index']],
+                                            ["label" => "任务统计", "url" =>  Url::to(['/admin/task-analys/index'])],
 
                                         ],
 
@@ -151,18 +144,42 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
 
                                         "label" => "管理",
 
-                                        "icon" => "th",
+                                        "icon" => "lock",
 
                                         "url" => "#",
 
                                         "items" => [
 
-                                            ["label" => "用户", "url" =>['/admin/user/index']],
-                                            ["label" => "教志", "url" =>['/admin/teaching-log/index']],
+                                            ["label" => "班级", "url" => Url::to(['/admin/squad'])],
+                                            ["label" => "用户", "url" => Url::to(['/admin/user/index']),],
+                                            ["label" => "教志", "url" => Url::to(['/admin/teaching-log/index']),],
 
                                         ],
 
                                     ],
+
+                                    [
+
+                                        "label" => "RBAC",
+
+                                        "icon" => "user-secret",
+
+                                        "url" => "#",
+
+                                        "items" => [
+
+                                            ["label" => "角色", "url" => Url::to(['/rbac/role/index'])],
+
+                                            ["label" => "路由", "url" => Url::to(['/rbac/route/index'])],
+
+                                            ["label" => "权限", "url" => Url::to(['/rbac/permission/index'])],
+
+                                            ["label" => "分配", "url" => Url::to(['/rbac/assignment/index'])],
+
+                                        ],
+
+                                    ],
+
 
                                 ]
 
@@ -182,33 +199,33 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
 
                 <!-- /menu footer buttons -->
 
-                <div class="sidebar-footer hidden-small">
-
-                    <a data-toggle="tooltip" data-placement="top" title="Settings">
-
-                        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-
-                    </a>
-
-                    <a data-toggle="tooltip" data-placement="top" title="FullScreen">
-
-                        <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-
-                    </a>
-
-                    <a data-toggle="tooltip" data-placement="top" title="Lock">
-
-                        <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-
-                    </a>
-
-                    <a data-toggle="tooltip" data-placement="top" title="Logout">
-
-                        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-
-                    </a>
-
-                </div>
+<!--                <div class="sidebar-footer hidden-small">-->
+<!---->
+<!--                    <a data-toggle="tooltip" data-placement="top" title="Settings">-->
+<!---->
+<!--                        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>-->
+<!---->
+<!--                    </a>-->
+<!---->
+<!--                    <a data-toggle="tooltip" data-placement="top" title="FullScreen">-->
+<!---->
+<!--                        <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>-->
+<!---->
+<!--                    </a>-->
+<!---->
+<!--                    <a data-toggle="tooltip" data-placement="top" title="Lock">-->
+<!---->
+<!--                        <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>-->
+<!---->
+<!--                    </a>-->
+<!---->
+<!--                    <a data-toggle="tooltip" data-placement="top" title="Logout">-->
+<!---->
+<!--                        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>-->
+<!---->
+<!--                    </a>-->
+<!---->
+<!--                </div>-->
 
                 <!-- /menu footer buttons -->
 

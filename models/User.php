@@ -172,5 +172,10 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
         return TaskStat::find()->where(['task_id' => $task_id,'user_id' => $user_id])->one();
     }
 
+    //获取所有用户
+    public function getAllUsers($squad_id){
+        return User::find()->where(['squad_id'=>$squad_id])->all();
+    }
+
 
 }
