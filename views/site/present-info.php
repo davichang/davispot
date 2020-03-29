@@ -47,9 +47,6 @@ $this->params['breadcrumbs'][] = $this->title;
                                 case 4:
                                     echo "早退";
                                     break;
-                                case 5:
-                                    echo "正常";
-                                    break;
                             }
                             ?></td>
                         <td><?= $p->remark ?></td>
